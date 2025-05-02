@@ -28,11 +28,25 @@ const ProductCard = ({ product }) => {
       </button>
 
       <Link to={`/product/${id}`} className="text-decoration-none">
-        <img
-          src={image}
-          alt={name}
-          className="img-fluid w-100 mb-2"
-        />
+        <div className="product-image-container" style={{
+          width: '100%',
+          height: '120px', 
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '0.5rem'
+        }}>
+          <img
+            src={image}
+            alt={name}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover' 
+            }}
+          />
+        </div>
 
         <h3 className="product-title h6 mb-1 text-dark">{name}</h3>
 
