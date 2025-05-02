@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HeaderTop = () => {
   return (
@@ -10,16 +11,16 @@ const HeaderTop = () => {
         </div>
         <div className="d-flex gap-4">
           <a href="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <i className="fas fa-user"></i> My Account
+            <FontAwesomeIcon icon="user" /> My Account
           </a>
           <a href="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <i className="fas fa-heart"></i> Wishlist
+            <FontAwesomeIcon icon={['fas', 'heart']} /> Wishlist
           </a>
           <a href="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <i className="fas fa-shopping-cart"></i> Cart
+            <FontAwesomeIcon icon="shopping-cart" /> Cart
           </a>
           <a href="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <i className="fas fa-sign-in-alt"></i> Login
+            <FontAwesomeIcon icon="sign-in-alt" /> Login
           </a>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   return (
@@ -16,7 +18,7 @@ const Footer = () => {
           <div className="col-6 col-md-2 mb-4">
             <h6 className="fw-semibold mb-3">Do You Need Help?</h6>
             <ul className="list-unstyled">
-              <li>Phone: +1 234 567 890</li>
+              <li>Phone: +265 992 28 87 72</li>
               <li>Email: support@sacredstore.com</li>
               <li>Live Chat</li>
             </ul>
@@ -24,48 +26,53 @@ const Footer = () => {
           <div className="col-6 col-md-2 mb-4">
             <h6 className="fw-semibold mb-3">Main Menu</h6>
             <ul className="list-unstyled">
-              <li><a href="#" className="footer-link text-secondary">Home</a></li>
-              <li><a href="#" className="footer-link text-secondary">Shop</a></li>
-              <li><a href="#" className="footer-link text-secondary">Deals</a></li>
-              <li><a href="#" className="footer-link text-secondary">Blog</a></li>
+              <li><Link to="/" className="footer-link text-secondary">Home</Link></li>
+              <li><Link to="/shop" className="footer-link text-secondary">Shop</Link></li>
+              <li><Link to="/deals" className="footer-link text-secondary">Deals</Link></li>
+              <li><Link to="/affliations" className="footer-link text-secondary">Affiliates & Creators</Link></li>
             </ul>
           </div>
           <div className="col-6 col-md-2 mb-4">
             <h6 className="fw-semibold mb-3">Useful Links</h6>
             <ul className="list-unstyled">
-              <li><a href="#" className="footer-link text-secondary">About Us</a></li>
-              <li><a href="#" className="footer-link text-secondary">Contact</a></li>
-              <li><a href="#" className="footer-link text-secondary">Privacy Policy</a></li>
-              <li><a href="#" className="footer-link text-secondary">Terms & Conditions</a></li>
+              <li><Link to="/about" className="footer-link text-secondary">About Us</Link></li>
+              <li><Link to="/contact" className="footer-link text-secondary">Contact</Link></li>
+              <li><Link to="/privacy" className="footer-link text-secondary">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="footer-link text-secondary">Terms & Conditions</Link></li>
             </ul>
           </div>
           <div className="col-6 col-md-4 col-lg-3 mb-4">
             <h6 className="fw-semibold mb-3">Download Our App</h6>
             <div className="d-flex gap-3 mb-3">
-              <a href="#" aria-label="Download on the App Store">
+              <Link to="/download-app" aria-label="Download on the App Store">
                 <img 
-                  src="https://via.placeholder.com/120x40?text=App+Store" 
+                  src="/assets/images/app-store.svg" 
                   alt="App Store download badge" 
                   height="40" 
                   width="120" 
                   className="img-fluid" 
                 />
-              </a>
-              <a href="#" aria-label="Get it on Google Play">
+              </Link>
+              <Link to="/download-app" aria-label="Get it on Google Play">
                 <img 
-                  src="https://via.placeholder.com/120x40?text=Google+Play" 
+                  src="/assets/images/play-store.svg" 
                   alt="Google Play download badge" 
                   height="40" 
                   width="120" 
                   className="img-fluid" 
                 />
-              </a>
+              </Link>
             </div>
             <div className="d-flex gap-3">
-              <a href="#" aria-label="Facebook" className="text-secondary fs-4"><i className="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Twitter" className="text-secondary fs-4"><i className="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Instagram" className="text-secondary fs-4"><i className="fab fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn" className="text-secondary fs-4"><i className="fab fa-linkedin"></i></a>
+              <Link to="/facebook" aria-label="Facebook" className="text-secondary fs-4">
+                <FontAwesomeIcon icon={['fab', 'facebook']} />
+              </Link>
+              <Link to="/twitter" aria-label="Twitter" className="text-secondary fs-4">
+                <FontAwesomeIcon icon={['fab', 'twitter']} />
+              </Link>
+              <Link to="/instagram" aria-label="Instagram" className="text-secondary fs-4">
+                <FontAwesomeIcon icon={['fab', 'instagram']} />
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CategorySidebar = () => {
   const categories = [
@@ -20,7 +21,7 @@ const CategorySidebar = () => {
         {categories.map((category, index) => (
           <li key={index}>
             <a href="#" className="d-flex align-items-center gap-2">
-              <i className="fas fa-angle-right"></i> {category}
+              <FontAwesomeIcon icon="angle-right" /> {category}
             </a>
           </li>
         ))}

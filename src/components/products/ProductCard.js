@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductCard = ({ product }) => {
   if (!product) return null;
@@ -23,7 +24,7 @@ const ProductCard = ({ product }) => {
       )}
 
       <button className="wishlist-btn position-absolute top-0 start-0 bg-transparent border-0">
-        <i className="far fa-heart"></i>
+        <FontAwesomeIcon icon={['far', 'heart']} />
       </button>
 
       <Link to={`/product/${id}`} className="text-decoration-none">
@@ -47,7 +48,7 @@ const ProductCard = ({ product }) => {
       </Link>
 
       <button className="btn-cart w-100 btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center gap-1">
-        <i className="fas fa-shopping-cart"></i> IN STOCK
+        <FontAwesomeIcon icon="shopping-cart" /> Add To Cart
       </button>
     </article>
   );
