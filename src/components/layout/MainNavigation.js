@@ -1,32 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MainNavigation = () => {
   return (
     <nav className="border-bottom border-secondary-subtle">
       <div className="container d-flex justify-content-between align-items-center py-3">
         <div className="d-flex align-items-center gap-4">
-          <img 
-            src="https://via.placeholder.com/120x40?text=SacredStore" 
-            alt="SacredStore logo" 
-            height="40" 
-            width="120" 
-          />
+          <Link to="/">
+            <img 
+              src="https://favpng.com/png_view/logo-cart-ecommerce-logo-png/HEkWxmzz#google_vignette" 
+              alt="SacredStore logo" 
+              height="40" 
+              width="120" 
+            />
+          </Link>
           <div className="d-none d-md-flex gap-4 fw-semibold text-secondary">
-            <a href="#" className="text-decoration-none text-secondary">Home</a>
-            <a href="#" className="text-decoration-none text-secondary">Shop</a>
-            <a href="#" className="text-decoration-none text-secondary">Top Categories</a>
-            <a href="#" className="text-decoration-none text-secondary">Deals</a>
-            <a href="#" className="text-decoration-none text-secondary">Blog</a>
-            <a href="#" className="text-decoration-none text-secondary">Contact</a>
+            <Link to="/" className="text-decoration-none text-secondary">Home</Link>
+            <Link to="/shop" className="text-decoration-none text-secondary">Shop</Link>
+            <Link to="#" className="text-decoration-none text-secondary">Top Categories</Link>
+            <Link to="#" className="text-decoration-none text-secondary">Deals</Link>
+            <Link to="#" className="text-decoration-none text-secondary">Contact</Link>
           </div>
         </div>
         <div className="d-flex gap-3 text-secondary small">
-          <a href="#" className="d-flex align-items-center gap-1 text-decoration-none text-secondary">
+          <Link to="#" className="d-flex align-items-center gap-1 text-decoration-none text-secondary">
             <i className="fas fa-search"></i> Search
-          </a>
-          <a href="#" className="d-flex align-items-center gap-1 text-decoration-none text-secondary">
+          </Link>
+          <Link to="#" className="d-flex align-items-center gap-1 text-decoration-none text-secondary">
             <i className="fas fa-bell"></i> Notifications
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
