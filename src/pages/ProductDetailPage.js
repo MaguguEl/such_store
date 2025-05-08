@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ProductGallery from '../components/products/ProductGallery';
 import ProductInfo from '../components/products/ProductInfo';
 import ProductTabs from '../components/products/ProductTabs';
@@ -36,13 +36,19 @@ const ProductDetailPage = () => {
       {/* Breadcrumb */}
       <nav aria-label="breadcrumb" className="mb-3">
         <ol className="breadcrumb">
-          <li className="breadcrumb-item"><a href="/">Home</a></li>
-          <li className="breadcrumb-item"><a href="/shop">Fruits & Vegetables</a></li>
-          <li className="breadcrumb-item active" aria-current="page">{product.name}</li>
+          <li className="breadcrumb-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link to="/shop">Fruits & Vegetables</Link>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            {product.name}
+          </li>
         </ol>
       </nav>
 
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-md-6">
           <ProductGallery images={product.images} />
         </div>
