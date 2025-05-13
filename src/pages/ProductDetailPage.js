@@ -1,15 +1,25 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useProducts } from '../contexts/ProductContext';
 import ProductGallery from '../components/products/ProductGallery';
 import ProductInfo from '../components/products/ProductInfo';
 import ProductTabs from '../components/products/ProductTabs';
 import RelatedProducts from '../components/products/RelatedProducts';
-import mockData from '../data/mockData';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { getProductById, getProductsByCategory, loading } = useProducts();
   
-  const { product, relatedProducts } = mockData.getProductDetail(id);
+  const product = id ? getProductById(id) : null;
+  const relatedProducts = product ? getProductsByCategory(product.categoryId)
+    .filter(p => p.id !== product.id)
+    .slice(0, 4) : [];
+
+  if (!id || (!loading && !product)) {
+    navigate('/not-found');
+    return null;
+  }
 
   return (
     <main className="container my-5">
@@ -20,26 +30,32 @@ const ProductDetailPage = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to="/shop">Fruits & Vegetables</Link>
+            <Link to="/shop">Shop</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            {product.name}
+            {product?.name || 'Product'}
           </li>
         </ol>
       </nav>
 
-      <div className="row mb-5">
-        <div className="col-md-6">
-          <ProductGallery images={product.images} />
-        </div>
-        <div className="col-md-6">
-          <ProductInfo product={product} />
-        </div>
-      </div>
+      {product && (
+        <>
+          <div className="row mb-5">
+            <div className="col-md-6">
+              <ProductGallery images={product.images} />
+            </div>
+            <div className="col-md-6">
+              <ProductInfo product={product} />
+            </div>
+          </div>
 
-      <ProductTabs description={product.description} />
-      
-      <RelatedProducts products={relatedProducts} />
+          <ProductTabs description={product.description} />
+          
+          {relatedProducts.length > 0 && (
+            <RelatedProducts products={relatedProducts} />
+          )}
+        </>
+      )}
     </main>
   );
 };

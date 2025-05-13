@@ -1,19 +1,8 @@
 import React from 'react';
+import { useProducts } from '../../contexts/ProductContext'; 
 
 const ShopFilters = () => {
-  const categories = [
-    { id: 'fruits', name: 'Fruits & Vegetables', checked: true },
-    { id: 'baby', name: 'Baby & Pregnancy' },
-    { id: 'beverages', name: 'Beverages' },
-    { id: 'meats', name: 'Meats & Seafood' },
-    { id: 'biscuits', name: 'Biscuits & Snacks' },
-    { id: 'breads', name: 'Breads & Bakery' },
-    { id: 'breakfast', name: 'Breakfast & Dairy' },
-    { id: 'frozen', name: 'Frozen Foods' },
-    { id: 'grocery', name: 'Grocery & Staples' },
-    { id: 'healthcare', name: 'Healthcare' },
-    { id: 'household', name: 'Household Needs' }
-  ];
+  const { categories } = useProducts(); 
 
   return (
     <>
@@ -41,13 +30,11 @@ const ShopFilters = () => {
               <input 
                 type="checkbox" 
                 id={`cat-${category.id}`} 
-                defaultChecked={category.checked} 
                 className="form-check-input" 
               />
-              <label htmlFor={`cat-${category.id}`} className={`mb-0 ${category.checked ? 'text-primary fw-semibold' : ''}`}>
-                {category.name}
+              <label htmlFor={`cat-${category.id}`} className="mb-0">
+                {category.name} {/* Using category name from context */}
               </label>
-              {category.checked && <span className="ms-auto">•</span>}
             </li>
           ))}
         </ul>

@@ -2,17 +2,48 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/products/ProductCard';
 import CategorySidebar from '../components/layout/CategorySidebar';
-import mockData from '../data/mockData';
+import { useProducts } from '../contexts/ProductContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const HomePage = () => {
-  const { newArrivals, featuredProducts, bestSellers, testimonials } = mockData.home;
+  const { featuredProducts, categories, loading } = useProducts();
+
+  // Create sections from featured products
+  const newArrivals = [...featuredProducts].sort((a, b) => 
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  ).slice(0, 8);
+
+  const bestSellers = [...featuredProducts].sort((a, b) => 
+    b.sales - a.sales
+  ).slice(0, 8);
+
+  // Mock testimonials (you can move this to context if needed)
+  const testimonials = [
+    {
+      id: 1,
+      name: 'John Doe',
+      comment: 'Great quality fruits, will order again!',
+      image: 'https://randomuser.me/api/portraits/men/1.jpg'
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      comment: 'Fast delivery and fresh produce.',
+      image: 'https://randomuser.me/api/portraits/women/1.jpg'
+    },
+    {
+      id: 3,
+      name: 'Mike Johnson',
+      comment: 'Excellent customer service and products.',
+      image: 'https://randomuser.me/api/portraits/men/2.jpg'
+    }
+  ];
 
   return (
     <main className="container my-4">
       <div className="row">
-        <CategorySidebar />
+        <CategorySidebar categories={categories} />
         
         <section className="col-12 col-md-9">
           {/* Banner */}
@@ -48,11 +79,30 @@ const HomePage = () => {
               </Link>
             </div>
             <div className="row g-4">
-              {newArrivals.slice(0, 4).map(product => (
-                <div key={product.id} className="col-6 col-md-4 col-lg-3">
-                  <ProductCard product={product} isNew={true} />
-                </div>
-              ))}
+              {loading ? (
+                Array(4).fill(0).map((_, i) => (
+                  <div key={i} className="col-6 col-md-4 col-lg-3">
+                    <div className="card h-100 placeholder-glow">
+                      <div className="card-img-top placeholder" style={{ height: '200px' }} />
+                      <div className="card-body">
+                        <h5 className="card-title placeholder-glow">
+                          <span className="placeholder col-6"></span>
+                        </h5>
+                        <p className="card-text placeholder-glow">
+                          <span className="placeholder col-7"></span>
+                          <span className="placeholder col-4"></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                newArrivals.slice(0, 4).map(product => (
+                  <div key={product.id} className="col-6 col-md-4 col-lg-3">
+                    <ProductCard product={product} isNew={true} />
+                  </div>
+                ))
+              )}
             </div>
           </section>
 
@@ -65,11 +115,30 @@ const HomePage = () => {
               </Link>
             </div>
             <div className="row g-4">
-              {featuredProducts.slice(0, 4).map(product => (
-                <div key={product.id} className="col-6 col-md-4 col-lg-3">
-                  <ProductCard product={product} isNew={true} />
-                </div>
-              ))}
+              {loading ? (
+                Array(4).fill(0).map((_, i) => (
+                  <div key={i} className="col-6 col-md-4 col-lg-3">
+                    <div className="card h-100 placeholder-glow">
+                      <div className="card-img-top placeholder" style={{ height: '200px' }} />
+                      <div className="card-body">
+                        <h5 className="card-title placeholder-glow">
+                          <span className="placeholder col-6"></span>
+                        </h5>
+                        <p className="card-text placeholder-glow">
+                          <span className="placeholder col-7"></span>
+                          <span className="placeholder col-4"></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                featuredProducts.slice(0, 4).map(product => (
+                  <div key={product.id} className="col-6 col-md-4 col-lg-3">
+                    <ProductCard product={product} isNew={true} />
+                  </div>
+                ))
+              )}
             </div>
           </section>
 
@@ -82,11 +151,30 @@ const HomePage = () => {
               </Link>
             </div>
             <div className="row g-4">
-              {bestSellers.slice(0, 4).map(product => (
-                <div key={product.id} className="col-6 col-md-4 col-lg-3">
-                  <ProductCard product={product} isNew={true} />
-                </div>
-              ))}
+              {loading ? (
+                Array(4).fill(0).map((_, i) => (
+                  <div key={i} className="col-6 col-md-4 col-lg-3">
+                    <div className="card h-100 placeholder-glow">
+                      <div className="card-img-top placeholder" style={{ height: '200px' }} />
+                      <div className="card-body">
+                        <h5 className="card-title placeholder-glow">
+                          <span className="placeholder col-6"></span>
+                        </h5>
+                        <p className="card-text placeholder-glow">
+                          <span className="placeholder col-7"></span>
+                          <span className="placeholder col-4"></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                bestSellers.slice(0, 4).map(product => (
+                  <div key={product.id} className="col-6 col-md-4 col-lg-3">
+                    <ProductCard product={product} isNew={true} />
+                  </div>
+                ))
+              )}
             </div>
           </section>
 
@@ -94,7 +182,7 @@ const HomePage = () => {
           <div className="bg-yellow-light rounded-3 p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
             <p className="fs-1 fw-bold text-yellow mb-0">Up to 30% off</p>
             <p className="text-secondary mb-0" style={{ maxWidth: '600px' }}>
-              Summer fruit sale! Enjoy discounts on all seasonal fruits this week only. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+              Summer fruit sale! Enjoy discounts on all seasonal fruits this week only.
             </p>
             <Link to="/shop?filter=sale" className="btn btn-warning fw-bold px-4 py-2">Shop Sale</Link>
           </div>

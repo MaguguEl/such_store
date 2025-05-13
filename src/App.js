@@ -11,32 +11,36 @@ import WishlistPage from './pages/WishlistPage';
 // import CheckoutPage from './pages/CheckoutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
+
 import { WishlistProvider } from './contexts/WishlistContext';
 import { CartProvider } from './contexts/CartContext';
+import { ProductProvider } from './contexts/ProductContext'; 
 
 function App() {
   return (
-    <WishlistProvider>
-      <CartProvider>
-        <Router>
-          <div className="bg-white text-dark">
-            <HeaderTop />
-            <MainNavigation />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/product/:id" element={<ProductDetailPage />} />
-              <Route path="/shop" element={<ShopPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/wishlist" element={<WishlistPage />} />
-              {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
-              <Route path="/order-tracking" element={<OrderTrackingPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-            <Footer />
-          </div>
-        </Router>
-      </CartProvider>
-    </WishlistProvider>
+    <ProductProvider> 
+      <WishlistProvider>
+        <CartProvider>
+          <Router>
+            <div className="bg-white text-dark">
+              <HeaderTop />
+              <MainNavigation />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/product/:id" element={<ProductDetailPage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/wishlist" element={<WishlistPage />} />
+                {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
+                <Route path="/order-tracking" element={<OrderTrackingPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+              <Footer />
+            </div>
+          </Router>
+        </CartProvider>
+      </WishlistProvider>
+    </ProductProvider>
   );
 }
 
