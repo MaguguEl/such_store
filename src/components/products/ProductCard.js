@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,12 +29,12 @@ const ProductCard = ({ product }) => {
       <Link to={`/product/${id}`} className="text-decoration-none">
         <div className="product-image-container" style={{
           width: '100%',
-          height: '120px', 
+          height: '180px', // Increased from 120px
           overflow: 'hidden',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginBottom: '0.5rem'
+          marginBottom: '0.75rem' // Slightly increased
         }}>
           <img
             src={image}
@@ -48,15 +47,15 @@ const ProductCard = ({ product }) => {
           />
         </div>
 
-        <h3 className="product-title h6 mb-1 text-dark">{name}</h3>
+        <h3 className="product-title h5 mb-2 text-dark">{name}</h3> {/* Changed from h6 to h5 */}
 
         {oldPrice && (
-          <p className="price-old mb-0 text-muted small text-decoration-line-through">
+          <p className="price-old mb-1 text-muted small text-decoration-line-through">
             ${Number(oldPrice).toFixed(2)}
           </p>
         )}
 
-        <p className={`price-new ${isOrganic ? 'text-success' : 'text-primary'} fw-bold`}>
+        <p className={`price-new ${isOrganic ? 'text-success' : 'text-primary'} fw-bold mb-3`}>
           ${Number(price).toFixed(2)}
         </p>
       </Link>

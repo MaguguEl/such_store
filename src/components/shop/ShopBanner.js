@@ -14,7 +14,7 @@ const ShopBanner = () => {
       <div className="position-absolute top-0 start-0 p-3 text-white">
         <h2 className="h4">Fresh Fruits for Healthy Living</h2>
         <p className="small">Discover our seasonal selection of premium quality fruits...</p>
-        <Link to="/fresh-fruits" className="btn btn-sm btn-primary">
+        <Link to="/fresh-fruits" className="btn btn-sm btn-success">
           Shop Now <FontAwesomeIcon icon={faArrowRight} className="ms-1" />
         </Link>
       </div>
