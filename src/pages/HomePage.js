@@ -55,9 +55,9 @@ const HomePage = () => {
               <p className="text-secondary mb-3" style={{ maxWidth: '320px' }}>
                 Farm-fresh quality guaranteed! Get seasonal fruits delivered with free shipping on orders over $25.
               </p>
-              <Link to="/shop" className="btn btn-purple mb-2">Shop Fruits</Link>
+              <Link to="/shop" className="btn btn-success mb-2">Shop Fruits</Link>
               <div className="text-decoration-line-through text-secondary fs-5 fw-semibold">$37.98</div>
-              <div className="text-purple fs-3 fw-bold">$27.98</div>
+              <div className="text-success fs-3 fw-bold">$27.98</div>
             </div>
             <div className="mt-3 mt-md-0 ms-md-4 flex-shrink-0">
               <img 
