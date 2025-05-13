@@ -11,8 +11,8 @@ const MainNavigation = () => {
             <Link to="/" className="text-decoration-none text-secondary">Home</Link>
             <Link to="/shop" className="text-decoration-none text-secondary">Shop</Link>
             <Link to="/categories" className="text-decoration-none text-secondary">Top Categories</Link>
-            <Link to="/deals" className="text-decoration-none text-secondary">Deals</Link>
-            <Link to="/affliations" className="text-decoration-none text-secondary">Affliates</Link>
+            <Link to="*" className="text-decoration-none text-secondary">Deals</Link>
+            <Link to="*" className="text-decoration-none text-secondary">Affliates</Link>
           </div>
         </div>
         <div className="d-flex gap-3 text-secondary">

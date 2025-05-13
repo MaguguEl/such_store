@@ -54,19 +54,6 @@ const ShopFilters = () => {
       </div>
 
       <div className="filter-section mb-4">
-        <h3 className="h5 mb-3">Filter by Color</h3>
-        <ul className="list-unstyled small text-secondary">
-          <li className="d-flex align-items-center gap-2">
-            <input type="radio" id="color-green" name="color" defaultChecked className="form-check-input" />
-            <label htmlFor="color-green" className="mb-0 d-flex align-items-center gap-1">
-              <span className="color-dot color-green d-inline-block rounded-circle" style={{ width: '12px', height: '12px', backgroundColor: '#28a745' }}></span> Green
-            </label>
-            <span className="ms-auto">(1)</span>
-          </li>
-        </ul>
-      </div>
-
-      <div className="filter-section mb-4">
         <h3 className="h5 mb-3">Filter by Brands</h3>
         <ul className="list-unstyled small text-secondary">
           <li className="d-flex align-items-center gap-2">

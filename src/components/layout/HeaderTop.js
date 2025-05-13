@@ -34,13 +34,10 @@ const HeaderTop = () => {
           <Link to="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
             <FontAwesomeIcon icon="user" size="lg" /> Sign In
           </Link>
-          <Link to="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
+          <Link to="/wishlist" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
             <FontAwesomeIcon icon={['fas', 'heart']} size="lg" /> Wishlist
           </Link>
-          <Link to="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-             <FontAwesomeIcon icon="bell" size="lg" />Notification
-          </Link>
-          <Link to="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
+          <Link to="/cart" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
             <FontAwesomeIcon icon="shopping-cart" size="lg" />Cart
           </Link>
         </div>

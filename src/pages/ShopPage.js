@@ -9,7 +9,7 @@ const ShopPage = () => {
     // Fresh Fruits
     {
       id: 1,
-      name: "Organic Bananas (Bunch)",
+      name: "Organic Bananas",
       price: 1.29,
       oldPrice: 1.89,
       discount: 32,
@@ -20,7 +20,7 @@ const ShopPage = () => {
     },
     {
       id: 2,
-      name: "Juicy Strawberries (1lb)",
+      name: "Juicy Strawberries",
       price: 2.99,
       oldPrice: 3.99,
       discount: 25,
@@ -31,7 +31,7 @@ const ShopPage = () => {
     },
     {
       id: 3,
-      name: "Sweet Pineapple (Each)",
+      name: "Sweet Pineapple",
       price: 3.49,
       oldPrice: 4.49,
       discount: 22,
@@ -40,88 +40,10 @@ const ShopPage = () => {
       category: "fresh-fruits",
       tags: ['new']
     },
-    {
-      id: 4,
-      name: "Red Seedless Grapes (2lb)",
-      price: 4.99,
-      oldPrice: 5.99,
-      discount: 17,
-      image: "https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-      isOrganic: true,
-      category: "fresh-fruits",
-      tags: ['new']
-    },
-    
-    // Dried Fruits
-    {
-      id: 5,
-      name: "Dried Mango Slices (8oz)",
-      price: 5.99,
-      oldPrice: 7.99,
-      discount: 25,
-      image: "https://example.com/dried-mango.jpg",
-      isOrganic: true,
-      category: "dried-fruits"
-    },
-    {
-      id: 6,
-      name: "Mixed Berry Medley (12oz)",
-      price: 8.49,
-      oldPrice: 9.99,
-      discount: 15,
-      image: "https://example.com/mixed-berries.jpg",
-      isOrganic: false,
-      category: "dried-fruits"
-    },
-    
-    // Fruit Products
-    {
-      id: 7,
-      name: "Strawberry Jam (16oz)",
-      price: 3.99,
-      oldPrice: 4.99,
-      discount: 20,
-      image: "https://example.com/strawberry-jam.jpg",
-      isOrganic: true,
-      category: "fruit-products",
-      tags: ['best-seller']
-    },
-    {
-      id: 8,
-      name: "Apple Cider Vinegar (32oz)",
-      price: 6.49,
-      oldPrice: 7.49,
-      discount: 13,
-      image: "https://example.com/apple-cider.jpg",
-      isOrganic: true,
-      category: "fruit-products"
-    },
-    {
-      id: 9,
-      name: "Blueberry Granola (12oz)",
-      price: 4.99,
-      oldPrice: 5.49,
-      discount: 9,
-      image: "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-      isOrganic: false,
-      category: "fruit-products",
-      tags: ['best-seller']
-    },
-    {
-      id: 10,
-      name: "Mango Smoothie Pack (6pk)",
-      price: 9.99,
-      oldPrice: 11.99,
-      discount: 17,
-      image: "https://example.com/mango-smoothie.jpg",
-      isOrganic: true,
-      category: "fruit-products"
-    },
-    
     // Citrus Fruits
     {
       id: 11,
-      name: "Navel Oranges (5lb bag)",
+      name: "Navel Oranges",
       price: 6.99,
       oldPrice: 8.99,
       discount: 22,
@@ -132,7 +54,7 @@ const ShopPage = () => {
     },
     {
       id: 12,
-      name: "Organic Lemons (4ct)",
+      name: "Organic Lemons",
       price: 3.49,
       oldPrice: 3.99,
       discount: 13,
@@ -140,35 +62,9 @@ const ShopPage = () => {
       isOrganic: true,
       category: "citrus-fruits"
     },
-    
-    // Tropical Fruits
-    {
-      id: 13,
-      name: "Fresh Coconut (Each)",
-      price: 2.99,
-      oldPrice: 3.49,
-      discount: 14,
-      image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-      isOrganic: false,
-      category: "tropical-fruits",
-      tags: ['new']
-    },
-    {
-      id: 14,
-      name: "Dragon Fruit (Each)",
-      price: 4.99,
-      oldPrice: 5.99,
-      discount: 17,
-      image: "https://example.com/dragon-fruit.jpg",
-      isOrganic: true,
-      category: "tropical-fruits",
-      tags: ['featured']
-    },
-    
-    // Berries
     {
       id: 15,
-      name: "Organic Blueberries (6oz)",
+      name: "Organic Blueberries",
       price: 3.99,
       oldPrice: 4.99,
       discount: 20,
@@ -177,17 +73,6 @@ const ShopPage = () => {
       category: "berries",
       tags: ['best-seller']
     },
-    {
-      id: 16,
-      name: "Raspberries (6oz)",
-      price: 3.49,
-      oldPrice: 3.99,
-      discount: 13,
-      image: "https://example.com/raspberries.jpg",
-      isOrganic: false,
-      category: "berries"
-    },
-    // Additional products from the new data
     {
       id: 17,
       name: "Tropical Mango",
@@ -212,14 +97,6 @@ const ShopPage = () => {
       category: "fresh-fruits",
       tags: ['best-seller']
     },
-    {
-      id: 20,
-      name: "Watermelon",
-      price: 4.99,
-      image: "https://images.unsplash.com/photo-1563114775-4ddca575f05f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-      category: "fresh-fruits",
-      tags: ['best-seller']
-    }
   ];
 
   // Extract special collections
