@@ -11,7 +11,7 @@ const ShopBanner = () => {
   return (
     <div className="position-relative rounded overflow-hidden mb-4" style={{ height: '180px' }}>
       <img 
-        src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+        src="https://static.vecteezy.com/system/resources/previews/012/332/471/non_2x/close-up-of-a-blue-fire-from-a-kitchen-stove-4-gas-burners-with-a-burning-flame-economy-concept-wide-banner-free-photo.jpg" 
         alt="Industrial gas equipment" 
         className="w-100 h-100 object-fit-cover" 
       />

@@ -39,11 +39,22 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <article className="product-card position-relative">
+    <article className="product-card position-relative" style={{
+      border: '1px solid #e0e0e0',
+      borderRadius: '8px',
+      padding: '1rem',
+      transition: 'box-shadow 0.3s ease',
+      ':hover': {
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+      }
+    }}>
       <button 
-        className="wishlist-btn position-absolute top-0 start-0 bg-transparent border-0"
+         className="wishlist-btn position-absolute top-0 end-0 bg-transparent border-0 p-2"
         onClick={handleWishlistToggle}
         aria-label={isInWishlist(id) ? "Remove from wishlist" : "Add to wishlist"}
+        style={{
+          zIndex: 1 
+        }}
       >
         <FontAwesomeIcon 
           icon={isInWishlist(id) ? fasHeart : farHeart} 
