@@ -1,47 +1,110 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUser,
+  faHeart,
+  faShoppingCart,
+  faThLarge,
+  faSearch,
+  faFire,
+  faGasPump,
+  faTools,
+  faShieldAlt,
+  faIndustry,
+  faBars
+} from '@fortawesome/free-solid-svg-icons';
 
-const HeaderTop = () => {
+const HeaderTop = ({ toggleMobileMenu }) => {
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+
   return (
-    <header className="border-bottom">
-      <div className="container-xl d-flex align-items-center justify-content-between py-3">
+    <header className="border-bottom bg-white">
+      <div className="container-xl py-3 d-flex justify-content-between align-items-center">
+        {/* Mobile Menu Toggle (hidden on desktop) */}
+        <button 
+          className="btn d-md-none me-3" 
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </button>
+
+        {/* Logo + Categories */}
         <div className="d-flex align-items-center gap-4">
           <Link to="/" className="d-flex align-items-center">
-              <img 
-                src="/assets/images/logo.png" 
-                alt="SacredStore logo" 
-                height="40" 
-                width="40" 
-              /> 
-            </Link>
-            <button type="button" className="btn btn-link text-secondary d-flex align-items-center gap-1 p-0 fw-semibold" aria-haspopup="true" aria-expanded="false">
-              <i className="fas fa-th-large fs-5"></i> Categories
-              <svg xmlns="http://www.w3.org/2000/svg" className="bi bi-chevron-down" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-              </svg>
+            <img
+              src="/assets/images/logo.png" 
+              alt="GasEnergyPro logo"
+              height="40"
+              width="40"
+            />
+          </Link>
+
+          {/* Categories Dropdown (hidden on mobile) */}
+          <div className="dropdown d-none d-md-block">
+            <button
+              type="button"
+              className="btn btn-link text-secondary d-flex align-items-center gap-1 p-0 fw-semibold text-decoration-none"
+              onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+              aria-expanded={isCategoryDropdownOpen}
+            >
+              <FontAwesomeIcon icon={faThLarge} className="fs-5" /> Categories
+              {/* <FontAwesomeIcon icon={faChevronDown} className="ms-1" /> */}
             </button>
+
+            {isCategoryDropdownOpen && (
+              <ul className="dropdown-menu show mt-2 shadow-sm">
+                <li><Link className="dropdown-item" to="/shop?category=regulators"><FontAwesomeIcon icon={faTools} className="me-2" /> Gas Regulators</Link></li>
+                <li><Link className="dropdown-item" to="/shop?category=hoses"><FontAwesomeIcon icon={faGasPump} className="me-2" /> Gas Hoses & Tubings</Link></li>
+                <li><Link className="dropdown-item" to="/shop?category=valves"><FontAwesomeIcon icon={faShieldAlt} className="me-2" /> Gas Valves</Link></li>
+                <li><Link className="dropdown-item" to="/shop?category=burners"><FontAwesomeIcon icon={faFire} className="me-2" /> Gas Burners & Nozzles</Link></li>
+                <li><Link className="dropdown-item" to="/shop?category=industrial"><FontAwesomeIcon icon={faIndustry} className="me-2" /> Industrial Gas Equipment</Link></li>
+              </ul>
+            )}
+          </div>
         </div>
-        <form role="search" aria-label="Search Sacred stores, and products" className="flex-grow-1 mx-5" >
+
+        {/* Search */}
+        <form role="search" className="flex-grow-1 mx-4 d-none d-md-block">
           <div className="position-relative">
-            <input type="search" id="search" name="search" placeholder="Search Sacred stores, and products" className="form-control search-input" aria-label="Search Cash Back stores, coupons and products" />
-            <button type="submit" className="position-absolute top-0 end-0 search-btn d-flex align-items-center justify-content-center" aria-label="Search">
-              <FontAwesomeIcon icon="search" size="lg" />
+            <input
+              type="search"
+              placeholder="Search gas regulators, hoses, burners..."
+              className="form-control"
+            />
+            <button type="submit" className="btn position-absolute top-0 end-0 h-100 px-3">
+              <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
         </form>
-        <div className="d-flex align-items-center gap-4 text-secondary header-user">
-          <Link to="#" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <FontAwesomeIcon icon="user" size="lg" /> Sign In
+
+        {/* User Icons */}
+        <div className="d-flex align-items-center gap-4 text-secondary">
+          <Link to="/login" className="text-decoration-none text-secondary d-flex align-items-center gap-1">
+            <FontAwesomeIcon icon={faUser} className="d-none d-md-inline" /> 
+            <span className="d-none d-md-inline">Sign In</span>
           </Link>
-          <Link to="/wishlist" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <FontAwesomeIcon icon={['fas', 'heart']} size="lg" /> Wishlist
+          <Link to="/wishlist" className="text-decoration-none text-secondary">
+            <FontAwesomeIcon icon={faHeart} />
           </Link>
-          <Link to="/cart" className="text-secondary d-flex align-items-center gap-1 text-decoration-none">
-            <FontAwesomeIcon icon="shopping-cart" size="lg" />Cart
+          <Link to="/cart" className="text-decoration-none text-secondary">
+            <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
         </div>
       </div>
+
+      {/* Navigation Bar (hidden on mobile) */}
+      <nav className="border-top bg-light d-none d-md-block">
+        <div className="container-xl d-flex justify-content-center py-2 gap-4 fw-semibold text-secondary">
+          <Link to="/" className="text-decoration-none text-secondary">Home</Link>
+          <Link to="/shop" className="text-decoration-none text-secondary">Shop</Link>
+          <Link to="/categories" className="text-decoration-none text-secondary">Gas Accessories</Link>
+          <Link to="/deals" className="text-decoration-none text-secondary">Best Deals</Link>
+          <Link to="/safety" className="text-decoration-none text-secondary">Safety Guides</Link>
+          <Link to="/bulk-orders" className="text-decoration-none text-secondary">Bulk Orders</Link>
+        </div>
+      </nav>
     </header>
   );
 };

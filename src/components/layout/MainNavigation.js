@@ -1,27 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import HeaderTop from './HeaderTop';
+import MobileMenu from './MobileMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 const MainNavigation = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <nav className="border-bottom border-secondary-subtle">
-      <div className="container-xl d-flex justify-content-between align-items-center py-3">
-        <div className="d-flex align-items-center gap-4">
-          <div className="nav nav-bottom justify-content-start gap-4 fw-semibold text-secondary">
-            <Link to="/" className="text-decoration-none text-secondary">Home</Link>
-            <Link to="/shop" className="text-decoration-none text-secondary">Shop</Link>
-            <Link to="/categories" className="text-decoration-none text-secondary">Top Categories</Link>
-            <Link to="*" className="text-decoration-none text-secondary">Deals</Link>
-            <Link to="*" className="text-decoration-none text-secondary">Affliates</Link>
+    <>
+      <HeaderTop toggleMobileMenu={toggleMobileMenu} />
+      <MobileMenu isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} />
+      
+      {/* Mobile Search (hidden on desktop) */}
+      <div className="d-md-none bg-white p-3 border-top">
+        <form role="search">
+          <div className="position-relative">
+            <input
+              type="search"
+              placeholder="Search gas products..."
+              className="form-control"
+            />
+            <button type="submit" className="btn position-absolute top-0 end-0 h-100 px-3">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
           </div>
-        </div>
-        <div className="d-flex gap-3 text-secondary">
-          <Link to="#" className="d-flex align-items-center gap-1 text-decoration-none text-secondary">
-              <FontAwesomeIcon icon="user" size="lg" /> Sign In
-          </Link>
-        </div>
+        </form>
       </div>
-    </nav>
+    </>
   );
 };
 
