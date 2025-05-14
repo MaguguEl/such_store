@@ -38,6 +38,52 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, [bannerProducts.length]);
 
+  // // Helper function to get unique products for each section
+  // const getUniqueProducts = () => {
+  //   const usedProductIds = new Set();
+    
+  //   // New Arrivals - sorted by creation date (newest first)
+  //   const newArrivals = [...featuredProducts]
+  //     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  //     .filter(product => !usedProductIds.has(product.id))
+  //     .slice(0, 8);
+    
+  //   newArrivals.forEach(product => usedProductIds.add(product.id));
+
+  //   // Best Sellers - sorted by sales (highest first)
+  //   const bestSellers = [...featuredProducts]
+  //     .sort((a, b) => b.sales - a.sales)
+  //     .filter(product => !usedProductIds.has(product.id))
+  //     .slice(0, 8);
+    
+  //   bestSellers.forEach(product => usedProductIds.add(product.id));
+
+  //   // Featured Products - filtered by featured flag
+  //   const featured = featuredProducts
+  //     .filter(product => product.featured && !usedProductIds.has(product.id))
+  //     .slice(0, 8);
+
+  //   return { newArrivals, bestSellers, featured };
+  // };
+
+  // const { newArrivals, bestSellers, featured } = getUniqueProducts();
+
+  // // Get industrial products for banner carousel
+  // const industrialProducts = featuredProducts.filter(product => product.isIndustrial).slice(0, 3);
+  
+  // // If no industrial products, use first 3 featured products
+  // const bannerProducts = industrialProducts.length > 0 
+  //   ? industrialProducts 
+  //   : featuredProducts.slice(0, 3);
+
+  // // Auto-rotate carousel every 5 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentBannerIndex(prev => (prev + 1) % bannerProducts.length);
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, [bannerProducts.length]);
+
   const nextBanner = () => {
     setCurrentBannerIndex(prev => (prev + 1) % bannerProducts.length);
   };
