@@ -4,6 +4,8 @@ import { useProducts } from '../contexts/ProductContext';
 import ShopFilters from '../components/shop/ShopFilters';
 import ProductGrid from '../components/shop/ProductGrid';
 import ShopBanner from '../components/shop/ShopBanner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faThLarge } from '@fortawesome/free-solid-svg-icons';
 
 const ShopPage = () => {
   const [searchParams] = useSearchParams();
@@ -11,6 +13,7 @@ const ShopPage = () => {
 
   // Get filter from URL
   const filter = searchParams.get('filter');
+  const category = searchParams.get('category');
   let filteredProducts = [...products];
 
   // Apply filters
@@ -24,10 +27,15 @@ const ShopPage = () => {
     filteredProducts = filteredProducts.filter(p => p.discount > 0);
   }
 
+  // Apply category filter
+  if (category) {
+    filteredProducts = filteredProducts.filter(p => p.categoryId === category);
+  }
+
   return (
     <main className="container pb-5">
       <div className="small text-muted py-3 user-select-none">
-        <Link to="/">Homepage</Link> &gt; Fruits &amp; Related Products
+        <Link to="/">Homepage</Link> &gt; Gas Equipment &amp; Accessories
       </div>
 
       <div className="row g-4">
@@ -35,18 +43,17 @@ const ShopPage = () => {
           <ShopFilters categories={categories} />
         </aside>
         <section className="col-12 col-md-9">
-          <ShopBanner 
-            title="Fresh Fruits & Delicious Products"
-            subtitle="Nature's sweetness delivered to your doorstep"
-          />
+          <ShopBanner />
           
           {/* Filters top */}
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3 small text-muted user-select-none">
             <div className="mb-2 mb-sm-0">
               <Link to="/shop" className="btn btn-link p-0 text-decoration-none text-primary d-inline-flex align-items-center gap-1">
-                <i className="fas fa-times"></i> Clear filters
+                <FontAwesomeIcon icon={faTimes} /> Clear filters
               </Link>
-              <span className="ms-2">› All Fruits</span>
+              {category && (
+                <span className="ms-2">› {categories.find(c => c.id === category)?.name}</span>
+              )}
             </div>
             <div className="d-flex align-items-center gap-3">
               <div>
@@ -66,7 +73,7 @@ const ShopPage = () => {
                 </select>
               </div>
               <button type="button" className="btn btn-outline-secondary btn-sm" aria-label="Grid view">
-                <i className="fas fa-th-large"></i>
+                <FontAwesomeIcon icon={faThLarge} />
               </button>
             </div>
           </div>

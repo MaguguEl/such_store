@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as farHeart, faHeart as fasHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as fasHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'; 
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
 
@@ -17,7 +18,6 @@ const ProductCard = ({ product }) => {
     images,
     price,
     oldPrice,
-    discount,
     rating,
     reviews,
     inStock,
@@ -40,12 +40,6 @@ const ProductCard = ({ product }) => {
 
   return (
     <article className="product-card position-relative">
-      {discount > 0 && (
-        <div className="sale-badge position-absolute top-0 end-0 bg-danger text-white small px-2 py-1">
-          {discount === 99 ? 'NEW' : `${discount}%`}
-        </div>
-      )}
-
       <button 
         className="wishlist-btn position-absolute top-0 start-0 bg-transparent border-0"
         onClick={handleWishlistToggle}
