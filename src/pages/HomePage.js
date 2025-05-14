@@ -260,30 +260,36 @@ const HomePage = () => {
 
           {/* Testimonials */}
           <section className="mt-5">
-            <div className="d-flex justify-content-between align-items-center mb-3">
+            <div className="d-flex justify-content-between align-items-center mb-4">
               <h2 className="fs-4 fw-bold mb-0">What Our Customers Say</h2>
               <Link to="/testimonials" className="text-decoration-none d-flex align-items-center gap-2">
                 See All <FontAwesomeIcon icon={faArrowRight} size="xs" />
               </Link>
             </div>
-            {/* <div className="row g-3">
+            
+            <div className="row g-4">  
               {testimonials.map(testimonial => (
-                <div key={testimonial.id} className="col-12 col-md-4 border rounded-3 p-3 d-flex gap-3 align-items-center bg-white">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
-                    className="rounded-circle" 
-                    width="64" 
-                    height="64" 
-                    style={{ objectFit: 'cover' }} 
-                  />
-                  <div>
-                    <p className="fw-semibold mb-1">{testimonial.name}</p>
-                    <p className="text-secondary small mb-0">{testimonial.comment}</p>
+                <div 
+                  key={testimonial.id} 
+                  className="col-12 col-md-6 col-lg-4" 
+                >
+                  <div className="border rounded-3 p-3 d-flex gap-3 align-items-center bg-white h-100">
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="rounded-circle" 
+                      width="64" 
+                      height="64" 
+                      style={{ objectFit: 'cover' }} 
+                    />
+                    <div>
+                      <p className="fw-semibold mb-1">{testimonial.name}</p>
+                      <p className="text-secondary small mb-0">{testimonial.comment}</p>
+                    </div>
                   </div>
                 </div>
               ))}
-            </div> */}
+            </div>
           </section>
         </section>
       </div>
