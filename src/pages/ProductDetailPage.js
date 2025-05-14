@@ -5,11 +5,15 @@ import ProductGallery from '../components/products/ProductGallery';
 import ProductInfo from '../components/products/ProductInfo';
 import ProductTabs from '../components/products/ProductTabs';
 import RelatedProducts from '../components/products/RelatedProducts';
+import { useCart } from '../contexts/CartContext';
+import { useWishlist } from '../contexts/WishlistContext';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { getProductById, getProductsByCategory, loading } = useProducts();
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   
   const product = id ? getProductById(id) : null;
   const relatedProducts = product ? getProductsByCategory(product.categoryId)
@@ -20,6 +24,16 @@ const ProductDetailPage = () => {
     navigate('/not-found');
     return null;
   }
+
+  const handleAddToCart = (quantity) => {
+    addToCart(product, quantity);
+  };
+
+  const handleWishlistToggle = () => {
+    isInWishlist(product.id)
+      ? removeFromWishlist(product.id)
+      : addToWishlist(product);
+  };
 
   return (
     <main className="container my-5">
@@ -41,15 +55,24 @@ const ProductDetailPage = () => {
       {product && (
         <>
           <div className="row mb-5">
-            <div className="col-md-6">
+            <div className="col-lg-6">
               <ProductGallery images={product.images} />
             </div>
-            <div className="col-md-6">
-              <ProductInfo product={product} />
+            <div className="col-lg-6">
+              <ProductInfo 
+                product={product} 
+                onAddToCart={handleAddToCart}
+                onWishlistToggle={handleWishlistToggle}
+                isInWishlist={isInWishlist(product.id)}
+              />
             </div>
           </div>
 
-          <ProductTabs description={product.description} />
+          <ProductTabs 
+            description={product.description} 
+            specifications={product.specifications}
+            reviews={product.reviews}
+          />
           
           {relatedProducts.length > 0 && (
             <RelatedProducts products={relatedProducts} />

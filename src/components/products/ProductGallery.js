@@ -1,34 +1,41 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ProductGallery = ({ images }) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState(0);
 
   return (
-    <div className="d-flex flex-column align-items-center gap-4">
-      {/* Main Image - Increased size */}
-      <div className="position-relative bg-light rounded-3 p-4" style={{ width: '450px', height: '450px' }}>
-        <img 
-          src={mainImage} 
-          alt="Main product view" 
-          className="img-fluid h-100 w-100 object-fit-contain" 
-          style={{ maxWidth: '100%', maxHeight: '100%' }}
+    <div className="product-gallery">
+      {/* Main Image */}
+      <motion.div 
+        className="main-image mb-3 rounded-3 bg-light"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        key={selectedImage}
+        transition={{ duration: 0.3 }}
+      >
+        <img
+          src={images[selectedImage]}
+          alt="Main product view"
+          className="img-fluid w-100"
+          style={{ maxHeight: '500px', objectFit: 'contain' }}
         />
-      </div>
-      
-      {/* Thumbnail Gallery */}
-      <div className="d-flex flex-wrap justify-content-center gap-3">
+      </motion.div>
+
+      {/* Thumbnails */}
+      <div className="thumbnail-container d-flex gap-2">
         {images.map((img, index) => (
-          <button 
-            key={index} 
-            className={`border rounded-2 p-2 bg-white ${mainImage === img ? 'border-primary border-2' : 'border-secondary'}`}
-            onClick={() => setMainImage(img)}
-            style={{ width: '80px', height: '80px' }}
+          <button
+            key={index}
+            className={`thumbnail-btn p-0 border rounded-2 ${selectedImage === index ? 'border-primary border-2' : 'border-light'}`}
+            onClick={() => setSelectedImage(index)}
             aria-label={`View image ${index + 1}`}
           >
-            <img 
-              src={img} 
-              alt={`Thumbnail ${index + 1}`} 
-              className="img-fluid h-100 w-100 object-fit-contain" 
+            <img
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              className="img-fluid"
+              style={{ height: '80px', width: '80px', objectFit: 'cover' }}
             />
           </button>
         ))}
