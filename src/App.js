@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 import './styles/global.css';
 import CartPage from './pages/CartPage';
 import WishlistPage from './pages/WishlistPage';
-// import CheckoutPage from './pages/CheckoutPage';
+import CheckoutPage from './pages/CheckoutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
 
@@ -29,7 +29,7 @@ function App() {
                 <Route path="/shop" element={<ShopPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
-                {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
+                <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/order-tracking" element={<OrderTrackingPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
