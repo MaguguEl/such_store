@@ -11,7 +11,7 @@ const WishlistPage = () => {
   const { addToCart } = useCart();
   
   useEffect(function() {
-    document.title = 'ElevateMart - Your Wishlist';
+    document.title = 'SacredEnergies - Your Wishlist';
   }, []);
   
   if (wishlistItems.length === 0) {

@@ -9,7 +9,7 @@ const CartPage = () => {
   const { cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();
   
   useEffect(function() {
-    document.title = 'ElevateMart - Your Cart';
+    document.title = 'SacredEnergies - Your Cart';
   }, []);
   
   if (cartItems.length === 0) {
