@@ -14,9 +14,13 @@ import {
   faIndustry,
   faBars
 } from '@fortawesome/free-solid-svg-icons';
+import { useCart } from '../../contexts/CartContext';
+import { useWishlist } from '../../contexts/WishlistContext';
 
 const HeaderTop = ({ toggleMobileMenu }) => {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const { cartItems } = useCart();
+  const { wishlistItems } = useWishlist();
 
   return (
     <header className="border-bottom bg-white">
@@ -50,7 +54,6 @@ const HeaderTop = ({ toggleMobileMenu }) => {
               aria-expanded={isCategoryDropdownOpen}
             >
               <FontAwesomeIcon icon={faThLarge} className="fs-5" /> Categories
-              {/* <FontAwesomeIcon icon={faChevronDown} className="ms-1" /> */}
             </button>
 
             {isCategoryDropdownOpen && (
@@ -85,11 +88,31 @@ const HeaderTop = ({ toggleMobileMenu }) => {
             <FontAwesomeIcon icon={faUser} className="d-none d-md-inline" /> 
             <span className="d-none d-md-inline">Sign In</span>
           </Link>
-          <Link to="/wishlist" className="text-decoration-none text-secondary">
+          
+          {/* Wishlist with Badge */}
+          <Link to="/wishlist" className="text-decoration-none text-secondary position-relative">
             <FontAwesomeIcon icon={faHeart} />
+            {wishlistItems.length > 0 && (
+              <span 
+                className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style={{ fontSize: '0.6rem', padding: '0.25rem 0.35rem' }}
+              >
+                {wishlistItems.length}
+              </span>
+            )}
           </Link>
-          <Link to="/cart" className="text-decoration-none text-secondary">
+          
+          {/* Cart with Badge */}
+          <Link to="/cart" className="text-decoration-none text-secondary position-relative">
             <FontAwesomeIcon icon={faShoppingCart} />
+            {cartItems.length > 0 && (
+              <span 
+                className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                style={{ fontSize: '0.6rem', padding: '0.25rem 0.35rem' }}
+              >
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
           </Link>
         </div>
       </div>
@@ -102,7 +125,6 @@ const HeaderTop = ({ toggleMobileMenu }) => {
           <Link to="/categories" className="text-decoration-none text-secondary">Gas Accessories</Link>
           <Link to="/deals" className="text-decoration-none text-secondary">Best Deals</Link>
           <Link to="/safety" className="text-decoration-none text-secondary">Safety Guides</Link>
-          <Link to="/bulk-orders" className="text-decoration-none text-secondary">Bulk Orders</Link>
         </div>
       </nav>
     </header>

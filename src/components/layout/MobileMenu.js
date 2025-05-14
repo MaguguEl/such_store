@@ -14,8 +14,13 @@ import {
   faShieldAlt,
   faIndustry
 } from '@fortawesome/free-solid-svg-icons';
+import { useCart } from '../../contexts/CartContext';
+import { useWishlist } from '../../contexts/WishlistContext';
 
 const MobileMenu = ({ isOpen, toggleMenu }) => {
+  const { cartItems } = useCart();
+  const { wishlistItems } = useWishlist();
+  
   if (!isOpen) return null;
 
   return (
@@ -49,11 +54,27 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
 
         <div className="border-top pt-3">
           <small className="text-muted mb-2 d-block">My Account</small>
-          <Link to="/wishlist" className="list-group-item list-group-item-action" onClick={toggleMenu}>
+          <Link to="/wishlist" className="list-group-item list-group-item-action position-relative" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faHeart} className="me-2 text-primary" /> Wishlist
+            {wishlistItems.length > 0 && (
+              <span 
+                className="position-absolute end-0 top-50 translate-middle-y badge rounded-pill bg-danger me-3"
+                style={{ fontSize: '0.65rem', padding: '0.25rem 0.4rem' }}
+              >
+                {wishlistItems.length}
+              </span>
+            )}
           </Link>
-          <Link to="/cart" className="list-group-item list-group-item-action" onClick={toggleMenu}>
+          <Link to="/cart" className="list-group-item list-group-item-action position-relative" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faShoppingCart} className="me-2 text-primary" /> Cart
+            {cartItems.length > 0 && (
+              <span 
+                className="position-absolute end-0 top-50 translate-middle-y badge rounded-pill bg-primary me-3"
+                style={{ fontSize: '0.65rem', padding: '0.25rem 0.4rem' }}
+              >
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
           </Link>
           <Link to="/order-tracking" className="list-group-item list-group-item-action" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faClock} className="me-2 text-primary" /> Order Tracking
