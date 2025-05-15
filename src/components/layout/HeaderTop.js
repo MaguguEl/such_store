@@ -5,7 +5,6 @@ import {
   faUser,
   faHeart,
   faShoppingCart,
-  faThLarge,
   faSearch,
   faFire,
   faGasPump,
@@ -53,7 +52,7 @@ const HeaderTop = ({ toggleMobileMenu }) => {
               onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
               aria-expanded={isCategoryDropdownOpen}
             >
-              <FontAwesomeIcon icon={faThLarge} className="fs-5" /> Categories
+              <FontAwesomeIcon icon={faBars} className="fs-5" /> Categories
             </button>
 
             {isCategoryDropdownOpen && (
@@ -85,13 +84,13 @@ const HeaderTop = ({ toggleMobileMenu }) => {
         {/* User Icons */}
         <div className="d-flex align-items-center gap-4 text-secondary">
           <Link to="/login" className="text-decoration-none text-secondary d-flex align-items-center gap-1">
-            <FontAwesomeIcon icon={faUser} className="d-none d-md-inline" /> 
+            <FontAwesomeIcon icon={faUser} className="d-none fs-5 d-md-inline" /> 
             <span className="d-none d-md-inline">Sign In</span>
           </Link>
           
           {/* Wishlist with Badge */}
           <Link to="/wishlist" className="text-decoration-none text-secondary position-relative">
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} className="fs-5"/>
             {wishlistItems.length > 0 && (
               <span 
                 className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -104,7 +103,7 @@ const HeaderTop = ({ toggleMobileMenu }) => {
           
           {/* Cart with Badge */}
           <Link to="/cart" className="text-decoration-none text-secondary position-relative">
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <FontAwesomeIcon icon={faShoppingCart} className="fs-5"/>
             {cartItems.length > 0 && (
               <span 
                 className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"

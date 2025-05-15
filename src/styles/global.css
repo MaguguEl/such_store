@@ -151,4 +151,18 @@ body {
     inset: 0;
     border-radius: 0.375rem;
   }
-  
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+.product-list-image {
+  height: 180px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .product-list-image {
+    height: 150px;
+  }
+}

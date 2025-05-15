@@ -10,11 +10,11 @@ const ShopBanner = () => {
 
   return (
     <div className="position-relative rounded overflow-hidden mb-4" style={{ height: '180px' }}>
-      <img 
-        src="https://static.vecteezy.com/system/resources/previews/012/332/471/non_2x/close-up-of-a-blue-fire-from-a-kitchen-stove-4-gas-burners-with-a-burning-flame-economy-concept-wide-banner-free-photo.jpg" 
-        alt="Industrial gas equipment" 
-        className="w-100 h-100 object-fit-cover" 
-      />
+       <img 
+          src="/assets/images/shop-banner.jpg" 
+          alt="Shop Banner" 
+          className="w-100 h-100 object-fit-cover" 
+        />
       <div className="position-absolute top-0 start-0 p-3 text-white bg-dark bg-opacity-50 w-100 h-100 d-flex flex-column justify-content-center">
         <div style={{ maxWidth: '500px' }}>
           <h2 className="h4 mb-2">

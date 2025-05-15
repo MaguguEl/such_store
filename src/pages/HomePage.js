@@ -294,12 +294,12 @@ const HomePage = () => {
           </section>
 
           {/* Safety Promotion Banner */}
-          <div className="bg-primary bg-opacity-10 rounded-3 p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 mb-5">
-            <div className="text-primary">
+          <div className="bg-warning bg-opacity-10 rounded-3 p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 mb-5">
+            <div className="text-warning">
               <p className="fs-1 fw-bold mb-0">Safety First</p>
               <p className="mb-0">All gas products meet industry safety standards</p>
             </div>
-            <Link to="/safety" className="btn btn-primary fw-bold px-4 py-2">
+            <Link to="/safety" className="btn btn-warning fw-bold px-4 py-2">
               Learn Safety Tips
             </Link>
           </div>

@@ -42,27 +42,30 @@ const ProductListCard = ({ product }) => {
     addToCart(product, 1);
   };
 
+  const fallbackImage = 'https://via.placeholder.com/150/E0E0E0/808080?Text=No+Image';
+
   return (
     <div className="card mb-3">
       <div className="row g-0">
         <div className="col-md-3 position-relative">
-          <button 
+          <button
             className="wishlist-btn position-absolute top-0 start-0 bg-transparent border-0 p-2"
             onClick={handleWishlistToggle}
             aria-label={isInWishlist(id) ? "Remove from wishlist" : "Add to wishlist"}
+            style={{ zIndex: 1 }}
           >
-            <FontAwesomeIcon 
-              icon={isInWishlist(id) ? fasHeart : farHeart} 
+            <FontAwesomeIcon
+              icon={isInWishlist(id) ? fasHeart : farHeart}
               className={isInWishlist(id) ? "text-danger" : "text-white"}
               size="lg"
             />
           </button>
           <Link to={`/product/${id}`}>
-            <img 
-              src={images[0]} 
-              className="img-fluid rounded-start w-100" 
+            <img
+              src={images && images.length > 0 ? images[0] : fallbackImage}
+              className="img-fluid rounded-start w-100"
               alt={name}
-              style={{ height: '180px', objectFit: 'cover' }}
+              style={{ height: '180px', objectFit: 'contain' }} // Changed objectFit to 'contain'
             />
           </Link>
         </div>
@@ -74,7 +77,7 @@ const ProductListCard = ({ product }) => {
               {isOrganic && <span className="badge bg-success ms-2">Organic</span>}
               {!inStock && <span className="badge bg-secondary ms-2">Out of Stock</span>}
             </div>
-            
+
             <Link to={`/product/${id}`} className="text-decoration-none text-dark">
               <h5 className="card-title">{name}</h5>
               <p className="card-text small text-muted">{description}</p>
@@ -101,8 +104,8 @@ const ProductListCard = ({ product }) => {
                     </span>
                   )}
                 </div>
-                
-                <button 
+
+                <button
                   className="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
                   onClick={handleAddToCart}
                   disabled={!inStock}
