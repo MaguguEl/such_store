@@ -16,7 +16,16 @@ const EmergencyContact = () => {
             <Phone size={24} className="me-3 mt-1" />
             <div>
               <p className="fw-semibold fs-5 mb-1">Gas Leak Emergency</p>
-              <p className="fs-4 fw-bold mb-1">1-800-GAS-HELP</p>
+              <p className="fs-4 fw-bold mb-1">129</p>
+              <p className="opacity-75">Available 24/7</p>
+            </div>
+          </div>
+
+          <div className="d-flex mb-4">
+            <Phone size={24} className="me-3 mt-1" />
+            <div>
+              <p className="fw-semibold fs-5 mb-1">Alternative Emergency Contact</p>
+              <p className="fs-4 fw-bold mb-1">+265 992 28 87 72</p>
               <p className="opacity-75">Available 24/7</p>
             </div>
           </div>
@@ -25,7 +34,7 @@ const EmergencyContact = () => {
             <Phone size={24} className="me-3 mt-1" />
             <div>
               <p className="fw-semibold fs-5 mb-1">Customer Service</p>
-              <p className="fs-4 fw-bold mb-1">1-800-555-1234</p>
+              <p className="fs-4 fw-bold mb-1">+265 992 28 87 72</p>
               <p className="opacity-75">Mon-Fri: 8am-8pm, Sat: 9am-5pm</p>
             </div>
           </div>
@@ -64,7 +73,7 @@ const EmergencyContact = () => {
             </div>
             <div>
               <h5 className="fw-semibold text-dark">Call from a safe location</h5>
-              <p className="text-muted mb-0">Once you're at a safe distance, call our emergency number: 1-800-GAS-HELP or 911.</p>
+              <p className="text-muted mb-0">Once you're at a safe distance, call the gas emergency number: 129 or +265 992 28 87 72.</p>
             </div>
           </li>
 

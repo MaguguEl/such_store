@@ -13,19 +13,19 @@ import FAQ from '../components/safety_guide/FAQ';
 const SafetyGuidePage = () => {
   return (
     <main className="container py-5 my-5">
-      {/* Emergency Notice */}
-      <div className="bg-danger bg-opacity-10 border-start border-4 border-danger p-4 mb-5">
+     {/* Emergency Notice */}
+    <div className="bg-danger bg-opacity-10 border-start border-4 border-danger p-4 mb-5">
         <div className="d-flex align-items-start">
-          <FontAwesomeIcon icon={faExclamationCircle} className="text-danger fs-4 me-3" />
-          <div>
+            <FontAwesomeIcon icon={faExclamationCircle} className="text-danger fs-4 me-3" />
+            <div>
             <h3 className="text-danger fw-bold">Gas Leak Emergency?</h3>
             <p className="text-danger mb-0">
-              If you smell gas, leave the area immediately and call our emergency hotline from a safe location:{' '}
-              <span className="fw-bold ms-1">1-800-GAS-HELP (1-800-427-4357)</span>
+                If you smell gas, leave the area immediately and call our emergency hotline from a safe location:{' '}
+                <span className="fw-bold ms-1">129</span> or <span className="fw-bold ms-1">+265 992 28 87 72</span>
             </p>
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
 
       {/* Main Content */}
       <section className="mb-5">

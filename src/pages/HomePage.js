@@ -140,15 +140,14 @@ const HomePage = () => {
                   ${currentBannerProduct?.price?.toFixed(2) || '49.99'}
                 </div>
               </div>
-              <div className="mt-3 mt-md-0 ms-md-4 flex-shrink-0">
-                <img 
-                  src={currentBannerProduct?.images?.[0] || "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"} 
-                  alt={currentBannerProduct?.name || "Industrial gas equipment"} 
-                  width="240" 
-                  height="160" 
-                  className="img-fluid rounded" 
-                />
-              </div>
+                <div className="mt-3 mt-md-0 ms-md-4 flex-shrink-0" style={{ width: '40%' }}> {/* Increased width */}
+                  <img
+                    src={currentBannerProduct?.images?.[0] || "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"}
+                    alt={currentBannerProduct?.name || "Industrial gas equipment"}
+                    className="img-fluid rounded"
+                    style={{ maxHeight: '200px', objectFit: 'cover' }} 
+                  />
+                </div>
             </div>
 
             {/* Carousel Controls */}

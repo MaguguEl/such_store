@@ -25,7 +25,7 @@
 .number {
   font-size: 8rem;
   font-weight: bold;
-  color: #64ffda;
+  color: #FFA500; 
   line-height: 1;
 }
 
@@ -53,14 +53,14 @@
   display: inline-block;
   padding: 0.8rem 2rem;
   font-size: 1.1rem;
-  color: #64ffda;
-  border: 2px solid #64ffda;
+  color: #FFA500; 
+  border: 2px solid #FFA500; 
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background-color: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
+  background-color: rgba(255, 165, 0, 0.1);
+  color: #FFA500; 
 }

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you are using React Router
-import { Sun, Snowflake, Cloud, Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faSnowflake, faCloud, faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 const SeasonalTips = () => {
   const [activeSeason, setActiveSeason] = useState('winter');
 
   const seasonalContent = {
     summer: {
-      icon: <Sun color="#fbbf24" size={24} />,
+      icon: faSun,
       colorClass: 'border-warning',
       bgColorClass: 'bg-warning-subtle',
       title: 'Summer Safety Tips',
@@ -22,7 +23,7 @@ const SeasonalTips = () => {
       ]
     },
     winter: {
-      icon: <Snowflake color="#3b82f6" size={24} />,
+      icon: faSnowflake,
       colorClass: 'border-primary',
       bgColorClass: 'bg-primary-subtle',
       title: 'Winter Safety Tips',
@@ -37,7 +38,7 @@ const SeasonalTips = () => {
       ]
     },
     spring: {
-      icon: <Cloud color="#6366f1" size={24} />,
+      icon: faCloud,
       colorClass: 'border-info',
       bgColorClass: 'bg-info-subtle',
       title: 'Spring Safety Tips',
@@ -52,7 +53,7 @@ const SeasonalTips = () => {
       ]
     },
     fall: {
-      icon: <Leaf color="#f97316" size={24} />,
+      icon: faLeaf,
       colorClass: 'border-danger',
       bgColorClass: 'bg-danger-subtle',
       title: 'Fall Safety Tips',
@@ -70,14 +71,14 @@ const SeasonalTips = () => {
 
   const current = seasonalContent[activeSeason];
 
-  const renderTab = (season, label, Icon) => (
+  const renderTab = (season, label, icon) => (
     <Link
       to={`#${season}`}
       className={`nav-link d-flex align-items-center me-3 py-2 ${activeSeason === season ? 'border-bottom border-3 border-primary fw-semibold text-primary' : 'text-secondary'}`}
       onClick={() => setActiveSeason(season)}
       style={{ textDecoration: 'none' }}
     >
-      <Icon size={18} className="me-1" />
+      <FontAwesomeIcon icon={icon} size="lg" className="me-1" />
       {label}
     </Link>
   );
@@ -86,16 +87,16 @@ const SeasonalTips = () => {
     <div className="card shadow-sm">
       <div className="card-header bg-white border-bottom">
         <nav className="nav nav-underline">
-          {renderTab('winter', 'Winter', Snowflake)}
-          {renderTab('spring', 'Spring', Cloud)}
-          {renderTab('summer', 'Summer', Sun)}
-          {renderTab('fall', 'Fall', Leaf)}
+          {renderTab('winter', 'Winter', seasonalContent.winter.icon)}
+          {renderTab('spring', 'Spring', seasonalContent.spring.icon)}
+          {renderTab('summer', 'Summer', seasonalContent.summer.icon)}
+          {renderTab('fall', 'Fall', seasonalContent.fall.icon)}
         </nav>
       </div>
 
       <div className={`card-body ${current.bgColorClass} border-start border-3 ${current.colorClass}`}>
         <div className="d-flex align-items-center mb-3">
-          {current.icon}
+          <FontAwesomeIcon icon={current.icon} size="lg" />
           <h5 className="ms-3 mb-0">{current.title}</h5>
         </div>
 
@@ -105,7 +106,7 @@ const SeasonalTips = () => {
           {current.tips.map((tip, index) => (
             <div key={index} className="d-flex align-items-start mb-2">
               <span className="badge rounded-pill bg-primary me-3">{index + 1}</span>
-              <span>{tip}</span>
+              <span style={{ marginLeft: '1.5em' }}>{tip}</span>
             </div>
           ))}
         </div>
