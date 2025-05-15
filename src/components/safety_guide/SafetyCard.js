@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faExclamationTriangle, faExclamationCircle, faCheckSquare, faThermometerHalf, faListCheck, faShieldAlt, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,10 +32,10 @@ const SafetyCard = ({ topic, title, description }) => {
       </div>
       <h5 className="card-title fw-bold text-dark">{title}</h5>
       <p className="card-text text-muted">{description}</p>
-      <a href="#" className="btn btn-link text-primary p-0 d-inline-flex align-items-center text-decoration-none">
+      <Link to={`/safety/${topic}`} className="btn btn-link text-primary p-0 d-inline-flex align-items-center text-decoration-none">
         Learn more
         <FontAwesomeIcon icon={faChevronRight} className="ms-1" />
-      </a>
+      </Link>
     </div>
   );
 };
