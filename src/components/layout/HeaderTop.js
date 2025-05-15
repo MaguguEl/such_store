@@ -38,7 +38,7 @@ const HeaderTop = ({ toggleMobileMenu }) => {
           <Link to="/" className="d-flex align-items-center">
             <img
               src="/assets/images/logo.png" 
-              alt="GasEnergyPro logo"
+              alt="SacredStore logo"
               height="40"
               width="40"
             />
@@ -123,7 +123,7 @@ const HeaderTop = ({ toggleMobileMenu }) => {
           <Link to="/shop" className="text-decoration-none text-secondary">Shop</Link>
           <Link to="/categories" className="text-decoration-none text-secondary">Gas Accessories</Link>
           <Link to="/deals" className="text-decoration-none text-secondary">Best Deals</Link>
-          <Link to="/safety" className="text-decoration-none text-secondary">Safety Guides</Link>
+          <Link to="/safety-guide" className="text-decoration-none text-secondary">Safety Guides</Link>
         </div>
       </nav>
     </header>

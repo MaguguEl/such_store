@@ -10,31 +10,71 @@ import WishlistPage from './pages/WishlistPage';
 import CheckoutPage from './pages/CheckoutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
-
+import SafetyGuidePage from './pages/SafetyGuidePage';
 import { WishlistProvider } from './contexts/WishlistContext';
 import { CartProvider } from './contexts/CartContext';
-import { ProductProvider } from './contexts/ProductContext'; 
+import { ProductProvider } from './contexts/ProductContext';
+
+const DefaultLayout = ({ children }) => (
+  <div className="bg-white text-dark">
+    <MainNavigation />
+    {children}
+    <Footer />
+  </div>
+);
 
 function App() {
   return (
-    <ProductProvider> 
+    <ProductProvider>
       <WishlistProvider>
         <CartProvider>
           <Router>
-            <div className="bg-white text-dark">
-              <MainNavigation />
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/product/:id" element={<ProductDetailPage />} />
-                <Route path="/shop" element={<ShopPage />} />
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/wishlist" element={<WishlistPage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/order-tracking" element={<OrderTrackingPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-              <Footer />
-            </div>
+            <Routes>
+              {/* Routes with navigation & footer */}
+              <Route path="/" element={
+                <DefaultLayout>
+                  <HomePage />
+                </DefaultLayout>
+              } />
+              <Route path="/product/:id" element={
+                <DefaultLayout>
+                  <ProductDetailPage />
+                </DefaultLayout>
+              } />
+              <Route path="/shop" element={
+                <DefaultLayout>
+                  <ShopPage />
+                </DefaultLayout>
+              } />
+              <Route path="/cart" element={
+                <DefaultLayout>
+                  <CartPage />
+                </DefaultLayout>
+              } />
+              <Route path="/wishlist" element={
+                <DefaultLayout>
+                  <WishlistPage />
+                </DefaultLayout>
+              } />
+              <Route path="/checkout" element={
+                <DefaultLayout>
+                  <CheckoutPage />
+                </DefaultLayout>
+              } />
+              <Route path="/order-tracking" element={
+                <DefaultLayout>
+                  <OrderTrackingPage />
+                </DefaultLayout>
+              } />
+              <Route path="/safety-guide" element={
+                <DefaultLayout>
+                  <SafetyGuidePage />
+                </DefaultLayout>
+              } />
+
+              {/* 404 Page - Standalone (no layout) */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
           </Router>
         </CartProvider>
       </WishlistProvider>

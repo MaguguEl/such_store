@@ -28,7 +28,7 @@ const ShopBanner = () => {
             <Link to="/shop" className="btn btn-sm btn-danger">
               Shop Now <FontAwesomeIcon icon={faArrowRight} className="ms-1" />
             </Link>
-            <Link to="/safety" className="btn btn-sm btn-outline-light">
+            <Link to="/safety-guide" className="btn btn-sm btn-outline-light">
               <FontAwesomeIcon icon={faShieldAlt} className="me-1" />
               Safety Guide
             </Link>

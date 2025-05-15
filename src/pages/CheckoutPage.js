@@ -42,7 +42,7 @@ const CheckoutPage = () => {
   const [orderId, setOrderId] = useState('');
   
   useEffect(function() {
-    document.title = 'ElevateMart - Checkout';
+    document.title = 'SacredEnergies - Checkout';
     
     // If cart is empty, redirect to cart page
     if (cartItems.length === 0 && !orderPlaced) {

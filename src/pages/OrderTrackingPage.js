@@ -59,7 +59,7 @@ const OrderTrackingPage = () => {
   const [loading, setLoading] = useState(false);
   
   useEffect(function() {
-    document.title = 'ElevateMart - Track Your Order';
+    document.title = 'SacredEnergies- Track Your Order';
   }, []);
   
   const handleSubmit = function(e) {
