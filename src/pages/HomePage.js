@@ -9,6 +9,10 @@ const HomePage = () => {
   const { featuredProducts, loading } = useProducts();
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
+    useEffect(function() {
+      document.title = 'SacredEnergies- Home';
+    }, []);
+
   // New Arrivals - sorted by creation date (newest first)
   const newArrivals = [...featuredProducts].sort((a, b) => 
     new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()

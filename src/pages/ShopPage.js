@@ -1,5 +1,4 @@
-// ShopPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useProducts } from '../contexts/ProductContext';
 import ShopFilters from '../components/shop/ShopFilters';
@@ -17,6 +16,10 @@ const ShopPage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+    useEffect(function() {
+      document.title = 'SacredEnergies - Go Shopping';
+    }, []);
 
   // Get filter from URL
   const filter = searchParams.get('filter');
@@ -45,24 +48,24 @@ const ShopPage = () => {
     if (product.price < priceRange[0] || product.price > priceRange[1]) {
       return false;
     }
-    
+
     // Category filter
     if (selectedCategories.length > 0 && !selectedCategories.includes(product.categoryId)) {
       return false;
     }
-    
+
     // Stock filter
     if (inStockOnly && !product.inStock) {
       return false;
     }
-    
+
     return true;
   });
 
   const handleCategoryToggle = (categoryId) => {
-    setSelectedCategories(prev => 
-      prev.includes(categoryId) 
-        ? prev.filter(id => id !== categoryId) 
+    setSelectedCategories(prev =>
+      prev.includes(categoryId)
+        ? prev.filter(id => id !== categoryId)
         : [...prev, categoryId]
     );
   };
@@ -93,58 +96,69 @@ const ShopPage = () => {
       </div>
 
       <div className="row g-4">
-        {/* Mobile filter toggle */}
-        <div className="d-md-none d-flex justify-content-between align-items-center mb-3">
-          <button 
-            className="btn btn-outline-primary"
-            onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-          >
-            <FontAwesomeIcon icon={faFilter} className="me-2" />
-            Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
-          </button>
-          <div className="btn-group" role="group">
-            <button 
-              type="button" 
-              className={`btn ${viewMode === 'grid' ? 'btn-primary' : 'btn-outline-secondary'}`}
-              onClick={() => setViewMode('grid')}
-              aria-label="Grid view"
+        {/* Mobile filter and view mode toggles */}
+        <div className="col-12 d-md-none mb-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <button
+              className="btn btn-outline-primary"
+              onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
             >
-              <FontAwesomeIcon icon={faThLarge} />
+              <FontAwesomeIcon icon={faFilter} className="me-2" />
+              Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
             </button>
-            <button 
-              type="button" 
-              className={`btn ${viewMode === 'list' ? 'btn-primary' : 'btn-outline-secondary'}`}
-              onClick={() => setViewMode('list')}
-              aria-label="List view"
-            >
-              <FontAwesomeIcon icon={faList} />
-            </button>
+            <div className="btn-group" role="group">
+              <button
+                type="button"
+                className={`btn btn-sm ${viewMode === 'grid' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                onClick={() => setViewMode('grid')}
+                aria-label="Grid view"
+              >
+                <FontAwesomeIcon icon={faThLarge} />
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${viewMode === 'list' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                onClick={() => setViewMode('list')}
+                aria-label="List view"
+              >
+                <FontAwesomeIcon icon={faList} />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Filters sidebar - desktop */}
-        <aside className={`col-md-3 d-none d-md-block ${mobileFiltersOpen ? 'd-block' : 'd-none'}`}>
-          <ShopFilters 
-            categories={categories}
-            selectedCategories={selectedCategories}
-            onCategoryToggle={handleCategoryToggle}
-            priceRange={priceRange}
-            onPriceChange={handlePriceChange}
-            inStockOnly={inStockOnly}
-            onStockToggle={() => setInStockOnly(!inStockOnly)}
-            maxPrice={1000000} // MWK max price
-          />
+        {/* Filters sidebar - desktop (and mobile if open) */}
+        <aside className={`col-md-3 ${mobileFiltersOpen ? 'd-block' : 'd-none d-md-block'}`}>
+          <div className="d-md-block"> {/* Ensures ShopFilters takes full width on mobile when open */}
+            <ShopFilters
+              categories={categories}
+              selectedCategories={selectedCategories}
+              onCategoryToggle={handleCategoryToggle}
+              priceRange={priceRange}
+              onPriceChange={handlePriceChange}
+              inStockOnly={inStockOnly}
+              onStockToggle={() => setInStockOnly(!inStockOnly)}
+              maxPrice={1000000} // MWK max price
+            />
+            {mobileFiltersOpen && (
+              <div className="d-flex justify-content-end mt-3">
+                <button className="btn btn-sm btn-outline-secondary" onClick={() => setMobileFiltersOpen(false)}>
+                  <FontAwesomeIcon icon={faTimes} className="me-1" /> Close Filters
+                </button>
+              </div>
+            )}
+          </div>
         </aside>
 
         {/* Main content */}
         <section className="col-12 col-md-9">
           <ShopBanner />
-          
+
           {/* Filters top */}
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3 small text-muted user-select-none">
             <div className="mb-2 mb-sm-0">
               {activeFilterCount > 0 && (
-                <button 
+                <button
                   onClick={handleClearFilters}
                   className="btn btn-link p-0 text-decoration-none text-primary d-inline-flex align-items-center gap-1"
                 >
@@ -158,8 +172,8 @@ const ShopPage = () => {
             <div className="d-flex align-items-center gap-3">
               <div>
                 <label htmlFor="sort" className="me-1">Sort:</label>
-                <select 
-                  id="sort" 
+                <select
+                  id="sort"
                   className="form-select form-select-sm d-inline-block w-auto"
                   onChange={(e) => {
                     const value = e.target.value;
@@ -176,17 +190,20 @@ const ShopPage = () => {
                   <option value="sale">On Sale</option>
                 </select>
               </div>
+              <div className="btn-group d-md-none" role="group">
+                {/* Mobile view mode buttons are now above */}
+              </div>
               <div className="btn-group d-none d-md-flex" role="group">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className={`btn btn-sm ${viewMode === 'grid' ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => setViewMode('grid')}
                   aria-label="Grid view"
                 >
                   <FontAwesomeIcon icon={faThLarge} />
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className={`btn btn-sm ${viewMode === 'list' ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => setViewMode('list')}
                   aria-label="List view"
@@ -221,12 +238,12 @@ const ShopPage = () => {
               <div className="py-5">
                 <h4 className="mb-3">No products match your search</h4>
                 <p className="text-muted mb-4">
-                  {activeFilterCount > 0 
+                  {activeFilterCount > 0
                     ? "Try adjusting your filters or search criteria"
                     : "Our inventory is currently empty. Please check back later."}
                 </p>
                 {activeFilterCount > 0 && (
-                  <button 
+                  <button
                     onClick={handleClearFilters}
                     className="btn btn-primary px-4"
                   >

@@ -47,7 +47,7 @@ const ProductListCard = ({ product }) => {
   return (
     <div className="card mb-3">
       <div className="row g-0">
-        <div className="col-md-3 position-relative">
+        <div className="col-md-4 position-relative">
           <button
             className="wishlist-btn position-absolute top-0 start-0 bg-transparent border-0 p-2"
             onClick={handleWishlistToggle}
@@ -65,11 +65,11 @@ const ProductListCard = ({ product }) => {
               src={images && images.length > 0 ? images[0] : fallbackImage}
               className="img-fluid rounded-start w-100"
               alt={name}
-              style={{ height: '180px', objectFit: 'contain' }} // Changed objectFit to 'contain'
+              style={{ maxHeight: '180px', objectFit: 'contain' }}
             />
           </Link>
         </div>
-        <div className="col-md-9">
+        <div className="col-md-8">
           <div className="card-body h-100 d-flex flex-column">
             <div className="mb-2">
               <span className="badge bg-primary">{category?.name || category}</span>

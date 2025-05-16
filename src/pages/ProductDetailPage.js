@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useProducts } from '../contexts/ProductContext';
 import ProductGallery from '../components/products/ProductGallery';
@@ -15,6 +15,10 @@ const ProductDetailPage = () => {
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   
+   useEffect(function() {
+          document.title = 'SacredEnergies - Product Details';
+        }, []); 
+
   const product = id ? getProductById(id) : null;
   const relatedProducts = product ? getProductsByCategory(product.categoryId)
     .filter(p => p.id !== product.id)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faExclamationCircle,
@@ -11,6 +11,10 @@ import SeasonalTips from '../components/safety_guide/SeasonalTips';
 import FAQ from '../components/safety_guide/FAQ';
 
 const SafetyGuidePage = () => {
+
+   useEffect(function() {
+        document.title = 'SacredEnergies - Safety Guide';
+      }, []);
   return (
     <main className="container py-5 my-5">
      {/* Emergency Notice */}
