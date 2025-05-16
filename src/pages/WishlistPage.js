@@ -80,7 +80,7 @@ const WishlistPage = () => {
                         
                         <div className="d-flex flex-wrap justify-content-between align-items-center mt-3">
                           <div className="fw-bold text-primary">
-                            ${product.price.toFixed(2)}
+                            MWK{product.price.toFixed(2)}
                           </div>
                           
                           <div className="d-flex gap-2">

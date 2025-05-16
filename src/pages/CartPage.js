@@ -71,7 +71,7 @@ const CartPage = () => {
                         
                         <div className="flex-grow-1">
                           <Link 
-                            to={`/product/${product.id}`}
+                            to={`/product/MWK{product.id}`}
                             className="h5 text-decoration-none text-dark"
                           >
                             {product.name}
@@ -100,10 +100,10 @@ const CartPage = () => {
                             
                             <div className="text-end mt-2 mt-sm-0">
                               <div className="fw-bold text-primary">
-                                ${(product.price * quantity).toFixed(2)}
+                                MWK{(product.price * quantity).toFixed(2)}
                               </div>
                               <div className="text-muted small">
-                                ${product.price.toFixed(2)} each
+                                MWK{product.price.toFixed(2)} each
                               </div>
                             </div>
                           </div>
@@ -133,23 +133,23 @@ const CartPage = () => {
                 <div className="mb-4">
                   <div className="d-flex justify-content-between py-2 border-bottom">
                     <span>Subtotal</span>
-                    <span>${cartTotal.toFixed(2)}</span>
+                    <span>MWK{cartTotal.toFixed(2)}</span>
                   </div>
                   
                   <div className="d-flex justify-content-between py-2 border-bottom">
                     <span>Shipping</span>
-                    <span>{cartTotal > 50 ? 'Free' : '$5.00'}</span>
+                    <span>{cartTotal > 85000 ? 'Free' : 'MWK 8,500'}</span>
                   </div>
-                  
+
                   <div className="d-flex justify-content-between py-2 border-bottom">
                     <span>Tax</span>
-                    <span>${(cartTotal * 0.08).toFixed(2)}</span>
+                    <span>MWK{(cartTotal * 0.08).toFixed(2)}</span>
                   </div>
                   
                   <div className="d-flex justify-content-between fw-bold py-3">
                     <span>Total</span>
                     <span>
-                      ${(cartTotal + (cartTotal > 50 ? 0 : 5) + (cartTotal * 0.08)).toFixed(2)}
+                      MWK{(cartTotal + (cartTotal > 50 ? 0 : 5) + (cartTotal * 0.08)).toFixed(2)}
                     </span>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ const CartPage = () => {
                 </div>
                 
                 <div className="mt-4 text-center text-muted small">
-                  <p className="mb-0">All orders over $50 qualify for free shipping.</p>
+                  <p className="mb-0">All orders over MWK 850,000  qualify for free shipping.</p>
                 </div>
               </div>
             </div>

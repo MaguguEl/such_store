@@ -2,54 +2,54 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox, faTruck, faCheckCircle, faClock, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-// Mock order for demo
+// Mock order for demo (Malawi context)
 const mockOrder = {
-  id: 'ORD-123456',
+  id: 'ORD-MW-20250505',
   status: 'shipped',
-  createdAt: '2025-04-05T12:00:00',
-  estimatedDelivery: '2025-04-10',
-  trackingNumber: 'TRK-789012345',
-  carrier: 'FedEx',
+  createdAt: '2025-05-05T12:00:00',
+  estimatedDelivery: '2025-05-10',
+  trackingNumber: 'MW-TRK-987654321',
+  carrier: 'Malawi Posts Corporation',
   items: [
     {
-      id: 'p1',
-      name: 'Wireless Earbuds',
-      price: 129.99,
+      id: '6',
+      name: 'Cadac Stealth 3 Burner Gas Braai',
+      price: 34999, // MWK
       quantity: 1,
-      image: 'https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg'
+      image: 'https://m.media-amazon.com/images/I/41OPxg62ilL._AC_.jpg'
     },
     {
-      id: 'p5',
-      name: 'Coffee Maker',
-      price: 89.99,
+      id: '4',
+      name: 'Commercial Gas Stove 2-Burner',
+      price: 89999, // MWK
       quantity: 1,
-      image: 'https://images.pexels.com/photos/585753/pexels-photo-585753.jpeg'
+      image: 'https://m.media-amazon.com/images/I/61kEHtY061L._AC_SL1500_.jpg'
     }
   ],
   timeline: [
     {
       status: 'ordered',
-      date: '2025-04-05T12:00:00',
-      description: 'Order placed'
+      date: '2025-05-05T12:00:00',
+      description: 'Order placed on the SacredStore platform'
     },
     {
       status: 'processing',
-      date: '2025-04-06T09:30:00',
-      description: 'Order confirmed and processed'
+      date: '2025-05-06T09:30:00',
+      description: 'Payment confirmed and preparing for dispatch'
     },
     {
       status: 'shipped',
-      date: '2025-04-07T14:15:00',
-      description: 'Order shipped via FedEx'
+      date: '2025-05-07T14:15:00',
+      description: 'Shipped via Malawi Posts Corporation'
     }
   ],
   shippingAddress: {
-    fullName: 'John Doe',
-    addressLine1: '123 Main St',
-    city: 'Anytown',
-    state: 'CA',
-    zipCode: '12345',
-    country: 'United States'
+    fullName: 'Chikondi Phiri',
+    addressLine1: 'House No. 12, Area 49',
+    city: 'Lilongwe',
+    district: 'Lilongwe',
+    postalCode: '265',
+    country: 'Malawi'
   }
 };
 
@@ -134,7 +134,7 @@ const OrderTrackingPage = () => {
                       type="text"
                       value={trackingId}
                       onChange={function(e) { return setTrackingId(e.target.value); }}
-                      placeholder="e.g. ORD-123456 or TRK-789012345"
+                      placeholder="e.g. ORD-MW-20250505 or MW-TRK-987654321"
                       className="form-control"
                     />
                     <span className="input-group-text">
@@ -142,7 +142,7 @@ const OrderTrackingPage = () => {
                     </span>
                   </div>
                   <div className="form-text">
-                    For demo, use: ORD-123456 or TRK-789012345
+                    For demo, use: ORD-MW-20250505 or MW-TRK-987654321
                   </div>
                 </div>
                 
@@ -260,7 +260,7 @@ const OrderTrackingPage = () => {
                         </div>
                         
                         <div className="flex-shrink-0">
-                          <p className="fw-bold">${(item.price * item.quantity).toFixed(2)}</p>
+                          <p className="fw-bold">MWK{(item.price * item.quantity).toFixed(2)}</p>
                         </div>
                       </li>
                     );

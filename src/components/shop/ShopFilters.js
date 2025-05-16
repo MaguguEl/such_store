@@ -50,7 +50,7 @@ const ShopFilters = ({
             />
           </div>
           <div className="mb-2 small fw-semibold text-secondary">
-            Price: ${priceRange[0]} — ${priceRange[1]}
+            Price: MWK{priceRange[0]} — MWK{priceRange[1]}
           </div>
         </div>
       </div>

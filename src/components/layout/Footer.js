@@ -71,7 +71,7 @@ const Footer = () => {
                     src="/assets/images/app-store.svg" 
                     alt="App Store" 
                     className="img-fluid" 
-                    style={{ height: '40px', width: 'auto' }}
+                    style={{ height: '80px', width: 'auto' }}
                   />
                 </Link>
                 <Link to="/download-app" aria-label="Get it on Google Play">
@@ -79,7 +79,7 @@ const Footer = () => {
                     src="/assets/images/play-store.svg" 
                     alt="Google Play" 
                     className="img-fluid" 
-                    style={{ height: '40px', width: 'auto' }}
+                    style={{ height: '80px', width: 'auto' }}
                   />
                 </Link>
               </div>

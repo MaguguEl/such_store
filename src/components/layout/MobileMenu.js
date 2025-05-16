@@ -2,90 +2,132 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faHome,
-  faShoppingBag,
-  faClock,
-  faUserCircle,
-  faHeart,
-  faShoppingCart,
-  faFire,
-  faGasPump,
-  faTools,
-  faShieldAlt,
-  faIndustry
+    faHome,
+    faShoppingBag,
+    faClock,
+    faUserCircle,
+    faHeart,
+    faShoppingCart,
+    faFire,
+    faGasPump,
+    faTools,
+    faShieldAlt,
+    faIndustry,
 } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
 
 const MobileMenu = ({ isOpen, toggleMenu }) => {
-  const { cartItems } = useCart();
-  const { wishlistItems } = useWishlist();
-  
-  if (!isOpen) return null;
+    const { cartItems } = useCart();
+    const { wishlistItems } = useWishlist();
 
-  return (
-    <div className="d-md-none bg-white border-top p-3">
-      <div className="list-group">
-        <Link to="/" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={faHome} className="me-2 text-primary" /> Home
-        </Link>
-        <Link to="/shop" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={faShoppingBag} className="me-2 text-primary" /> Shop All
-        </Link>
+    if (!isOpen) return null;
 
-        <div className="border-top pt-3">
-          <small className="text-muted mb-2 d-block">Categories</small>
-          <Link to="/shop?category=regulators" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faTools} className="me-2 text-primary" /> Gas Regulators
-          </Link>
-          <Link to="/shop?category=hoses" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faGasPump} className="me-2 text-primary" /> Gas Hoses & Tubings
-          </Link>
-          <Link to="/shop?category=valves" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faShieldAlt} className="me-2 text-primary" /> Gas Valves
-          </Link>
-          <Link to="/shop?category=burners" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faFire} className="me-2 text-primary" /> Gas Burners & Nozzles
-          </Link>
-          <Link to="/shop?category=industrial" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faIndustry} className="me-2 text-primary" /> Industrial Gas Equipment
-          </Link>
+    return (
+        <div className="d-md-none fixed-top bg-white shadow vh-100 overflow-auto" style={{ zIndex: 1050 }}>
+            <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
+                <h5 className="m-0 fw-bold">Menu</h5>
+                <button onClick={toggleMenu} className="btn btn-close"></button>
+            </div>
+            <div className="p-3">
+                <ul className="list-unstyled m-0">
+                    <li className="mb-2">
+                        <Link to="/" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                            <FontAwesomeIcon icon={faHome} className="me-3" />
+                            <span className="fs-6">Home</span>
+                        </Link>
+                    </li>
+                    <li className="mb-2">
+                        <Link to="/shop" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                            <FontAwesomeIcon icon={faShoppingBag} className="me-3" />
+                            <span className="fs-6">Shop All</span>
+                        </Link>
+                    </li>
+                    <li className="mt-4 mb-2">
+                        <h6 className="text-muted fw-semibold mb-2">Categories</h6>
+                        <ul className="list-unstyled ps-3">
+                            <li className="mb-2">
+                                <Link to="/shop?category=regulators" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faTools} className="me-3" />
+                                    <span className="fs-6">Gas Regulators</span>
+                                </Link>
+                            </li>
+                            <li className="mb-2">
+                                <Link to="/shop?category=hoses" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faGasPump} className="me-3" />
+                                    <span className="fs-6">Gas Hoses & Tubings</span>
+                                </Link>
+                            </li>
+                            <li className="mb-2">
+                                <Link to="/shop?category=valves" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faShieldAlt} className="me-3" />
+                                    <span className="fs-6">Gas Valves</span>
+                                </Link>
+                            </li>
+                            <li className="mb-2">
+                                <Link to="/shop?category=burners" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faFire} className="me-3" />
+                                    <span className="fs-6">Gas Burners & Nozzles</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/shop?category=industrial" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faIndustry} className="me-3" />
+                                    <span className="fs-6">Industrial Gas Equipment</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li className="mt-4 mb-2">
+                        <h6 className="text-muted fw-semibold mb-2">My Account</h6>
+                        <ul className="list-unstyled ps-3">
+                            <li className="mb-2 position-relative">
+                                <Link to="/wishlist" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faHeart} className="me-3" />
+                                    <span className="fs-6">Wishlist</span>
+                                    {wishlistItems.length > 0 && (
+                                        <span
+                                            className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger ms-1"
+                                            style={{ fontSize: '0.6rem' }}
+                                        >
+                                            {wishlistItems.length}
+                                        </span>
+                                    )}
+                                </Link>
+                            </li>
+                            <li className="mb-2 position-relative">
+                                <Link to="/cart" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faShoppingCart} className="me-3" />
+                                    <span className="fs-6">Cart</span>
+                                    {cartItems.length > 0 && (
+                                        <span
+                                            className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary ms-1"
+                                            style={{ fontSize: '0.6rem' }}
+                                        >
+                                            {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                                        </span>
+                                    )}
+                                </Link>
+                            </li>
+                            <li className="mb-2">
+                                <Link to="/order-tracking" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faClock} className="me-3" />
+                                    <span className="fs-6">Order Tracking</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/profile" className="nav-link d-flex align-items-center text-decoration-none text-dark" onClick={toggleMenu}>
+                                    <FontAwesomeIcon icon={faUserCircle} className="me-3" />
+                                    <span className="fs-6">Profile</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div className="border-top pt-3">
-          <small className="text-muted mb-2 d-block">My Account</small>
-          <Link to="/wishlist" className="list-group-item list-group-item-action position-relative" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faHeart} className="me-2 text-primary" /> Wishlist
-            {wishlistItems.length > 0 && (
-              <span 
-                className="position-absolute end-0 top-50 translate-middle-y badge rounded-pill bg-danger me-3"
-                style={{ fontSize: '0.65rem', padding: '0.25rem 0.4rem' }}
-              >
-                {wishlistItems.length}
-              </span>
-            )}
-          </Link>
-          <Link to="/cart" className="list-group-item list-group-item-action position-relative" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faShoppingCart} className="me-2 text-primary" /> Cart
-            {cartItems.length > 0 && (
-              <span 
-                className="position-absolute end-0 top-50 translate-middle-y badge rounded-pill bg-primary me-3"
-                style={{ fontSize: '0.65rem', padding: '0.25rem 0.4rem' }}
-              >
-                {cartItems.reduce((total, item) => total + item.quantity, 0)}
-              </span>
-            )}
-          </Link>
-          <Link to="/order-tracking" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faClock} className="me-2 text-primary" /> Order Tracking
-          </Link>
-          <Link to="/profile" className="list-group-item list-group-item-action" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faUserCircle} className="me-2 text-primary" /> Profile
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default MobileMenu;

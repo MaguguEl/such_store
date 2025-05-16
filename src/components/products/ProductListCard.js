@@ -96,11 +96,11 @@ const ProductListCard = ({ product }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <div>
                   <span className={`fw-bold ${isOrganic ? 'text-success' : 'text-primary'}`}>
-                    ${discount > 0 ? (price * (1 - discount / 100)).toFixed(2) : price.toFixed(2)}
+                    MWK{discount > 0 ? (price * (1 - discount / 100)).toFixed(2) : price.toFixed(2)}
                   </span>
                   {(oldPrice || discount > 0) && (
                     <span className="text-decoration-line-through text-muted small ms-2">
-                      ${oldPrice ? Number(oldPrice).toFixed(2) : price.toFixed(2)}
+                      MWK{oldPrice ? Number(oldPrice).toFixed(2) : price.toFixed(2)}
                     </span>
                   )}
                 </div>

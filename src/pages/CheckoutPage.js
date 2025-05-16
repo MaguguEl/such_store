@@ -4,28 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faCreditCard, faHome, faTruck, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '../contexts/CartContext';
 
-// Mock address data
+// Mock address data (Malawi context)
 const mockAddresses = [
   {
     id: 'addr1',
-    fullName: 'John Doe',
-    addressLine1: '123 Main St',
-    city: 'Anytown',
-    state: 'CA',
-    zipCode: '12345',
-    country: 'United States',
-    phone: '555-123-4567',
+    fullName: 'Chikondi Phiri',
+    addressLine1: 'House No. 12, Area 49',
+    city: 'Lilongwe',
+    district: 'Lilongwe',
+    postalCode: '265', 
+    country: 'Malawi',
+    phone: '+265 991 234 567',
     isDefault: true
   }
 ];
 
-// Mock payment methods
+// Mock payment methods (Malawi context)
 const mockPaymentMethods = [
   {
     id: 'pay1',
-    cardNumber: '**** **** **** 1234',
-    cardholderName: 'John Doe',
-    expiryDate: '12/25',
+    cardNumber: '**** **** **** 6789',
+    cardholderName: 'Chikondi Phiri',
+    expiryDate: '11/27',
     isDefault: true
   }
 ];
@@ -231,7 +231,7 @@ const CheckoutPage = () => {
                               <div className="card card-body">
                                 <div className="d-flex justify-content-between">
                                   <p className="fw-bold mb-1">Standard Shipping</p>
-                                  <p className="fw-bold mb-1">{subtotal > 50 ? 'Free' : '$5.00'}</p>
+                                  <p className="fw-bold mb-1">{subtotal > 50 ? 'Free' : 'MWK8,500.00'}</p>
                                 </div>
                                 <p className="text-muted small mb-0">Delivery in 3-5 business days</p>
                               </div>
@@ -253,7 +253,7 @@ const CheckoutPage = () => {
                               <div className="card card-body">
                                 <div className="d-flex justify-content-between">
                                   <p className="fw-bold mb-1">Express Shipping</p>
-                                  <p className="fw-bold mb-1">$15.00</p>
+                                  <p className="fw-bold mb-1">MWK 25,500</p>
                                 </div>
                                 <p className="text-muted small mb-0">Delivery in 1-2 business days</p>
                               </div>
@@ -418,7 +418,7 @@ const CheckoutPage = () => {
                               </div>
                               
                               <div className="flex-shrink-0">
-                                <p className="fw-bold">${(product.price * quantity).toFixed(2)}</p>
+                                <p className="fw-bold">MWK{(product.price * quantity).toFixed(2)}</p>
                               </div>
                             </li>
                           );
@@ -527,19 +527,19 @@ const CheckoutPage = () => {
                 <ul className="list-group list-group-flush mb-4">
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Subtotal ({cartItems.reduce(function(acc, item) { return acc + item.quantity; }, 0)} items)</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>MWK{subtotal.toFixed(2)}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? 'Free' : `$MWK{shipping.toFixed(2)}`}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Tax</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span>MWK{tax.toFixed(2)}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between fw-bold">
                     <span>Order Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>MWK{total.toFixed(2)}</span>
                   </li>
                 </ul>
                 

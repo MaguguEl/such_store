@@ -119,11 +119,11 @@ const ProductCard = ({ product }) => {
           <div className="price-container mt-auto" style={{ minHeight: '3.5em'  }}>
             {oldPrice && (
               <p className="price-old mb-0 text-muted small text-decoration-line-through">
-                ${Number(oldPrice).toFixed(2)}
+                MWK{Number(oldPrice).toFixed(2)}
               </p>
             )}
             <p className={`price-new ${isOrganic ? 'text-success' : 'text-primary'} fw-bold mb-0`}>
-              ${Number(price).toFixed(2)}
+              MWK{Number(price).toFixed(2)}
             </p>
           </div>
         </Link>
